@@ -1,0 +1,1336 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valencià 1r ESO - Quadern d'Estudi Adaptat de Vega</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+        }
+        .tab-active {
+            background-color: #4f46e5;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.25s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- ========================================== -->
+    <!-- PORTADA PRINCIPAL PARA VEGA                -->
+    <!-- ========================================== -->
+    <div id="cover-screen" class="min-h-screen flex flex-col justify-between bg-gradient-to-br from-indigo-600 via-blue-600 to-teal-500 text-white p-4 sm:p-8">
+        <!-- Barra superior portada con selector de idioma -->
+        <div class="max-w-5xl w-full mx-auto flex justify-end">
+            <div class="flex items-center bg-white/20 backdrop-blur-md p-1 rounded-xl border border-white/30">
+                <button id="cover-btn-va" onclick="setLanguage('va')" class="px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-white text-indigo-700 shadow-sm">
+                    Valencià
+                </button>
+                <button id="cover-btn-es" onclick="setLanguage('es')" class="px-3 py-1.5 rounded-lg text-sm font-bold text-white hover:bg-white/10 transition-all">
+                    Castellano (Ajuda)
+                </button>
+            </div>
+        </div>
+
+        <!-- Centro de la portada -->
+        <div class="max-w-4xl w-full mx-auto my-auto text-center py-6 animate-fade-in">
+            <!-- Ilustración SVG temática de lectura, letras y teatro -->
+            <div class="bg-white/15 backdrop-blur-md rounded-3xl p-4 sm:p-5 max-w-xl mx-auto mb-6 border border-white/25 shadow-xl">
+                <svg class="w-full h-24 sm:h-28" viewBox="0 0 420 110">
+                    <!-- Libro abierto -->
+                    <path d="M90 85 Q150 75 210 88 Q270 75 330 85 L330 30 Q270 20 210 33 Q150 20 90 30 Z" fill="rgba(255,255,255,0.92)" stroke="#fde047" stroke-width="2.5"/>
+                    <line x1="210" y1="33" x2="210" y2="88" stroke="#94a3b8" stroke-width="2"/>
+                    <!-- Líneas de texto página izquierda -->
+                    <line x1="110" y1="45" x2="190" y2="43" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="110" y1="56" x2="185" y2="54" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="110" y1="67" x2="170" y2="65" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+                    <!-- Letras y símbolos página derecha -->
+                    <text x="232" y="56" font-size="18" font-weight="900" fill="#4f46e5">A B C</text>
+                    <text x="232" y="75" font-size="14" font-weight="800" fill="#0d9488">Ç · LL · L·L</text>
+                    <!-- Iconos flotantes -->
+                    <text x="42" y="65" font-size="32">📚</text>
+                    <text x="352" y="65" font-size="32">🎭</text>
+                    <text x="196" y="22" font-size="22">✨</text>
+                </svg>
+            </div>
+
+            <span class="inline-block bg-amber-300 text-amber-950 font-black text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md mb-4" data-va="📖 1r d'ESO • Valencià: Tema 1 (Parlem?) 📖" data-es="📖 1º de ESO • Valenciano: Tema 1 (Parlem?) 📖">
+                📖 1r d'ESO • Valencià: Tema 1 (Parlem?) 📖
+            </span>
+
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight drop-shadow-md mb-3">
+                Quadern d'estudi adaptat per a <span class="text-amber-300 underline decoration-wavy decoration-amber-300/70">VEGA</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-blue-100 max-w-2xl mx-auto mb-8 font-medium" data-va="Tot el temari que entra demà explicat pas a pas, amb trucs visuals, exercicis autocorregibles i 3 simulacres d'examen!" data-es="¡Todo el temario que entra mañana explicado paso a paso, con trucos visuales, ejercicios autocorregibles y 3 simulacros de examen!">
+                Tot el temari que entra demà explicat pas a pas, amb trucs visuals, exercicis autocorregibles i 3 simulacres d'examen!
+            </p>
+
+            <!-- Tarjeta Principal Única Adaptada -->
+            <div class="max-w-2xl mx-auto text-left">
+                <button onclick="openNotebook()" class="w-full group bg-white text-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-amber-300 hover:scale-[1.02] transition-all flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-3 right-3 bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full uppercase shadow-sm" data-va="⭐ Material Adaptat • Examen Demà" data-es="⭐ Material Adaptado • Examen Mañana">
+                        ⭐ Material Adaptat • Examen Demà
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                                🎯
+                            </div>
+                            <div>
+                                <h2 class="text-2xl sm:text-3xl font-black text-indigo-950" data-va="Control de Valencià Adaptat" data-es="Control de Valenciano Adaptado">
+                                    Control de Valencià Adaptat
+                                </h2>
+                                <p class="text-xs font-bold text-indigo-600 uppercase tracking-wide" data-va="5 apartats exactes de la professora" data-es="5 apartados exactos de la profesora">
+                                    5 apartats exactes de la professora
+                                </p>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-2 text-sm text-slate-700 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <li data-va="1️⃣ <b>Comprensió escrita:</b> 3 textos curtets i fàcils (unes 100 paraules) amb preguntes visuals." data-es="1️⃣ <b>Comprensión escrita:</b> 3 textos cortitos y fáciles (unas 100 palabras) con preguntas visuales.">1️⃣ <b>Comprensió escrita:</b> 3 textos curtets i fàcils (unes 100 paraules) amb preguntes visuals.</li>
+                            <li data-va="2️⃣ <b>Ordre alfabètic:</b> Joc interactiu de clicar les paraules en ordre (amb trucs de <b>ç, ll i l·l</b>)." data-es="2️⃣ <b>Orden alfabético:</b> Juego interactivo de pulsar las palabras en orden (con trucos de <b>ç, ll y l·l</b>).">2️⃣ <b>Ordre alfabètic:</b> Joc interactiu de clicar les paraules en ordre (amb trucs de <b>ç, ll i l·l</b>).</li>
+                            <li data-va="3️⃣ <b>Camps semàntics:</b> Caçador d'intruses clicant targetes amb dibuixos i colors." data-es="3️⃣ <b>Campos semánticos:</b> Cazador de intrusas pulsando tarjetas con dibujos y colores.">3️⃣ <b>Camps semàntics:</b> Caçador d'intruses clicant targetes amb dibuixos i colors.</li>
+                            <li data-va="4️⃣ <b>Gèneres literaris:</b> Targetes visuals per a diferenciar <b>Narrativa, Poesia i Teatre</b>." data-es="4️⃣ <b>Géneros literarios:</b> Tarjetas visuales para diferenciar <b>Narrativa, Poesía y Teatro</b>.">4️⃣ <b>Gèneres literaris:</b> Targetes visuals per a diferenciar <b>Narrativa, Poesia i Teatre</b>.</li>
+                            <li data-va="5️⃣ <b>Expressió escrita:</b> Esquema pas a pas i connectors per a redactar sense bloquejar-se." data-es="5️⃣ <b>Expresión escrita:</b> Esquema paso a paso y conectores para redactar sin bloquearse.">5️⃣ <b>Expressió escrita:</b> Esquema pas a pas i connectors per a redactar sense bloquejar-se.</li>
+                        </ul>
+                    </div>
+
+                    <div class="w-full bg-indigo-600 group-hover:bg-indigo-700 text-white font-extrabold py-3.5 px-6 rounded-xl text-center shadow-md flex items-center justify-center gap-2 text-base sm:text-lg">
+                        <span data-va="Començar a repassar ara!" data-es="¡Empezar a repasar ahora!">Començar a repassar ara!</span>
+                        <span>➡️</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <p class="text-center text-xs text-blue-100/90 font-medium" data-va="Fet a mida per a Vega • Ànim, que ho tens xupat! ✨" data-es="Hecho a medida para Vega • ¡Ánimo, que lo tienes chupado! ✨">
+            Fet a mida per a Vega • Ànim, que ho tens xupat! ✨
+        </p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- CONTENEDOR DEL CUADERNO (OCULTO AL INICIO) -->
+    <!-- ========================================== -->
+    <div id="app-container" class="hidden min-h-screen flex flex-col">
+
+        <!-- Barra Superior Fija -->
+        <header class="bg-white border-b border-indigo-100 sticky top-0 z-50 shadow-sm">
+            <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <button onclick="backToCover()" class="bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-700 px-3 py-2 rounded-xl font-extrabold text-xs sm:text-sm transition-all border border-slate-200 flex items-center gap-1.5 shadow-sm">
+                        <span>🏠</span> <span data-va="Portada" data-es="Portada">Portada</span>
+                    </button>
+                    <div>
+                        <h1 class="text-base sm:text-xl font-extrabold text-slate-800 tracking-tight" data-va="🎯 Control de Valencià Adaptat • Vega" data-es="🎯 Control de Valenciano Adaptado • Vega">🎯 Control de Valencià Adaptat • Vega</h1>
+                        <p class="text-xs text-slate-500 font-medium" data-va="Comprensió • Ordre Alfabètic • Camps Semàntics • Gèneres • Expressió" data-es="Comprensión • Orden Alfabético • Campos Semánticos • Géneros • Expresión">Comprensió • Ordre Alfabètic • Camps Semàntics • Gèneres • Expressió</p>
+                    </div>
+                </div>
+
+                <!-- Botón Cambio de Idioma -->
+                <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+                    <button id="btn-va" onclick="setLanguage('va')" class="px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-indigo-600 text-white shadow-sm">
+                        Valencià
+                    </button>
+                    <button id="btn-es" onclick="setLanguage('es')" class="px-3 py-1.5 rounded-lg text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
+                        Castellano (Ajuda)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menú de Navegación por Pestañas -->
+            <nav class="max-w-5xl mx-auto px-4 pb-3 overflow-x-auto">
+                <div class="flex space-x-2 min-w-max">
+                    <button onclick="switchTab('teoria')" id="tab-teoria" class="tab-btn tab-active px-4 py-2 rounded-xl text-sm font-bold transition-all flex items-center gap-1.5">
+                        <span>📚</span> <span data-va="Teoria i Trucs" data-es="Teoría y Trucos">Teoria i Trucs</span>
+                    </button>
+                    <button onclick="switchTab('ficha1')" id="tab-ficha1" class="tab-btn bg-white text-slate-600 hover:bg-indigo-50 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-slate-200">
+                        <span data-va="📖 1. Comprensió" data-es="📖 1. Comprensión">📖 1. Comprensió</span>
+                    </button>
+                    <button onclick="switchTab('ficha2')" id="tab-ficha2" class="tab-btn bg-white text-slate-600 hover:bg-indigo-50 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-slate-200">
+                        <span data-va="🔤 2. Ordre Alfabètic" data-es="🔤 2. Orden Alfabético">🔤 2. Ordre Alfabètic</span>
+                    </button>
+                    <button onclick="switchTab('ficha3')" id="tab-ficha3" class="tab-btn bg-white text-slate-600 hover:bg-indigo-50 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-slate-200">
+                        <span data-va="🗂️ 3. Camps Semàntics" data-es="🗂️ 3. Campos Semánticos">🗂️ 3. Camps Semàntics</span>
+                    </button>
+                    <button onclick="switchTab('ficha4')" id="tab-ficha4" class="tab-btn bg-white text-slate-600 hover:bg-indigo-50 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-slate-200">
+                        <span data-va="🎭 4. Gèneres Literaris" data-es="🎭 4. Géneros Literarios">🎭 4. Gèneres Literaris</span>
+                    </button>
+                    <button onclick="switchTab('ficha5')" id="tab-ficha5" class="tab-btn bg-emerald-50 text-emerald-800 hover:bg-emerald-100 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-emerald-200">
+                        <span data-va="✍️ 5. Expressió Escrita" data-es="✍️ 5. Expresión Escrita">✍️ 5. Expressió Escrita</span>
+                    </button>
+                    <button onclick="switchTab('examen')" id="tab-examen" class="tab-btn bg-amber-50 text-amber-800 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-amber-200">
+                        <span data-va="🏆 3 Simulacres d'Examen" data-es="🏆 3 Simulacros de Examen">🏆 3 Simulacres d'Examen</span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Contenedor Principal -->
+        <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-6">
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 0: TEORÍA Y TRUCOS                 -->
+            <!-- ========================================== -->
+            <section id="sec-teoria" class="tab-content space-y-6 animate-fade-in">
+                <div class="bg-indigo-600 text-white rounded-2xl p-5 shadow-md">
+                    <span class="bg-indigo-500 text-indigo-100 text-xs font-extrabold px-2.5 py-1 rounded-full uppercase">Resum Visual • Tema 1</span>
+                    <h2 class="text-lg sm:text-xl font-extrabold mt-1" data-va="📚 Tot el que entra a l'examen en 4 claus fàcils:" data-es="📚 Todo lo que entra en el examen en 4 claves fáciles:">📚 Tot el que entra a l'examen en 4 claus fàcils:</h2>
+                    <p class="text-sm text-indigo-100 mt-1" data-va="Repassa aquests 4 quadres abans de passar a les fitxes de pràctica i als 3 simulacres." data-es="Repasa estos 4 cuadros antes de pasar a las fichas de práctica y a los 3 simulacros.">Repassa aquests 4 quadres abans de passar a les fitxes de pràctica i als 3 simulacres.</p>
+                </div>
+
+                <!-- BLOQUE 1: ORDEN ALFABÉTICO (PÁG. 20) -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-indigo-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-indigo-100 text-indigo-700 font-extrabold px-3 py-1 rounded-lg text-sm">Pàg. 20</span>
+                        <h3 class="text-xl font-extrabold text-slate-800" data-va="🔤 1. L'Alfabet i l'Ordre Alfabètic" data-es="🔤 1. El Alfabeto y el Orden Alfabético">🔤 1. L'Alfabet i l'Ordre Alfabètic</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-3" data-va="L'alfabet valencià té <b>26 lletres</b>. Per a ordenar paraules, mirem la <b>1a lletra</b>; si coincideixen, mirem la <b>2a</b>, la <b>3a</b>, etc." data-es="El alfabeto valenciano tiene <b>26 letras</b>. Para ordenar palabras, miramos la <b>1ª letra</b>; si coinciden, miramos la <b>2ª</b>, la <b>3ª</b>, etc.">L'alfabet valencià té <b>26 lletres</b>. Per a ordenar paraules, mirem la <b>1a lletra</b>; si coincideixen, mirem la <b>2a</b>, la <b>3a</b>, etc.</p>
+                    <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-xl text-sm space-y-1.5">
+                        <p class="font-extrabold text-amber-900">💡 Truc clau del diccionari (molt important!):</p>
+                        <p class="text-slate-800">• La <b>ç</b> (ce trencada) s'ordena dins de la <b>c</b> normal: <i>traç → traca → traçat → tracció</i>.</p>
+                        <p class="text-slate-800">• El dígraf <b>ll</b> i la lletra composta <b>l·l</b> s'ordenen dins de la <b>l</b> normal: <i>calar → caliu → cal·ligrafia → callista</i>.</p>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 2: CAMPS SEMÀNTICS (PÁG. 15) -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-sky-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-sky-100 text-sky-800 font-extrabold px-3 py-1 rounded-lg text-sm">Pàg. 15</span>
+                        <h3 class="text-xl font-extrabold text-slate-800" data-va="🗂️ 2. Els Camps Semàntics" data-es="🗂️ 2. Los Campos Semánticos">🗂️ 2. Els Camps Semàntics</h3>
+                    </div>
+                    <p class="text-sm text-slate-700 mb-3" data-va="Un <b>camp semàntic</b> és un conjunt de paraules que pertanyen a la <b>mateixa família de significat</b> (mateixa classe de realitats)." data-es="Un <b>campo semántico</b> es un conjunto de palabras que pertenecen a la <b>misma familia de significado</b> (misma clase de realidades).">Un <b>camp semàntic</b> és un conjunt de paraules que pertanyen a la <b>mateixa família de significat</b> (mateixa classe de realitats).</p>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                        <div class="bg-sky-50 p-3.5 rounded-xl border border-sky-200">
+                            <span class="font-extrabold text-sky-900 block mb-1">🎨 Colors</span>
+                            <p class="text-slate-700">roig, blau, groc, lila, ocre, marró...</p>
+                        </div>
+                        <div class="bg-sky-50 p-3.5 rounded-xl border border-sky-200">
+                            <span class="font-extrabold text-sky-900 block mb-1">🪑 Mobles</span>
+                            <p class="text-slate-700">llit, cadira, sofà, balancí, armari...</p>
+                        </div>
+                        <div class="bg-sky-50 p-3.5 rounded-xl border border-sky-200">
+                            <span class="font-extrabold text-sky-900 block mb-1">🐦 Ocells / Rèptils</span>
+                            <p class="text-slate-700">canari, teuladí, oroneta / tortuga, cocodril...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 3: GÈNERES LITERARIS -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-purple-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-purple-100 text-purple-800 font-extrabold px-3 py-1 rounded-lg text-sm">Tema 1</span>
+                        <h3 class="text-xl font-extrabold text-slate-800" data-va="🎭 3. Els Gèneres Literaris (Com reconéixer-los a simple vista)" data-es="🎭 3. Los Géneros Literarios (Cómo reconocerlos a simple vista)">🎭 3. Els Gèneres Literaris (Com reconéixer-los a simple vista)</h3>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+                            <span class="text-2xl block mb-1">📖</span>
+                            <h4 class="font-black text-amber-950 text-base mb-1">NARRATIVA</h4>
+                            <p class="text-slate-700">Un <b>narrador</b> conta una història amb personatges en un lloc i temps. S'escriu en <b>prosa</b> (línies de marge a marge, com un conte o novel·la).</p>
+                        </div>
+                        <div class="bg-rose-50 p-4 rounded-xl border border-rose-200">
+                            <span class="text-2xl block mb-1">🌹</span>
+                            <h4 class="font-black text-rose-950 text-base mb-1">POESIA</h4>
+                            <p class="text-slate-700">Expressa sentiments i emocions. S'escriu en <b>versos curts</b> agrupats en <b>estrofes</b> i sol tindre <b>ritme i rima</b>.</p>
+                        </div>
+                        <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-200">
+                            <span class="text-2xl block mb-1">🎭</span>
+                            <h4 class="font-black text-indigo-950 text-base mb-1">TEATRE</h4>
+                            <p class="text-slate-700">Està fet per a representar-se. No té narrador: apareix el <b>nom del personatge</b> abans del que diu i <i>acotacions</i> entre parèntesis.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 1: COMPRENSIÓN ESCRITA (3 TEXTOS CORTOS) -->
+            <!-- ========================================== -->
+            <section id="sec-ficha1" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-800" data-va="📖 Fitxa 1: 3 Lectures Curtetes i Fàcils (~100 paraules)" data-es="📖 Ficha 1: 3 Lecturas Cortitas y Fáciles (~100 palabras)">📖 Fitxa 1: 3 Lectures Curtetes i Fàcils (~100 paraules)</h2>
+                            <p class="text-sm text-slate-500" data-va="Llig cada història breu i prem el botó amb la resposta correcta!" data-es="¡Lee cada historia breve y pulsa el botón con la respuesta correcta!">Llig cada història breu i prem el botó amb la resposta correcta!</p>
+                        </div>
+                        <span id="score-ficha1" class="hidden px-4 py-2 rounded-xl font-extrabold text-sm"></span>
+                    </div>
+
+                    <!-- TEXTO 1 -->
+                    <div class="mb-8 bg-amber-50/60 border-2 border-amber-200 rounded-2xl p-5">
+                        <div class="flex items-center justify-between border-b border-amber-200 pb-2 mb-3">
+                            <span class="font-black text-amber-900 uppercase text-xs tracking-wider">📄 Lectura 1 • El quadern blau de Morgana</span>
+                            <span class="text-xs font-bold bg-amber-200 text-amber-900 px-2.5 py-0.5 rounded-full">~95 paraules</span>
+                        </div>
+                        <p class="text-sm sm:text-base leading-relaxed text-slate-800 mb-4 bg-white p-4 rounded-xl border border-amber-100">
+                            Morgana té onze anys i li encanta inventar històries misterioses. Cada vesprada, quan acaba els deures de l'escola, obri el seu quadern blau i apunta totes les idees que li passen pel cap. Un dia va escriure un conte sobre un drac volador que vivia dalt del campanar del poble. Al principi pensava que era una idea un poc rara i la va arrugar per a tirar-la a la paperera. Però la seua amiga Anna la va llegir, li va agradar moltíssim i juntes la van convertir en el millor conte de la classe.
+                        </p>
+
+                        <div class="space-y-4">
+                            <!-- P1.1 -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <p class="font-bold text-slate-800 mb-2.5">1. Quants anys té Morgana i què fa quan acaba els deures?</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="f1_q1">
+                                    <button type="button" onclick="selectOption('f1_q1', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅰️ Té 11 anys i apunta idees al seu quadern blau.</button>
+                                    <button type="button" onclick="selectOption('f1_q1', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅱️ Té 15 anys i juga a futbol al parc.</button>
+                                    <button type="button" onclick="selectOption('f1_q1', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅲 Té 8 anys i mira la televisió.</button>
+                                </div>
+                                <div id="res_f1_q1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                            </div>
+
+                            <!-- P1.2 -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <p class="font-bold text-slate-800 mb-2.5">2. Qui va salvar el conte del drac volador de la paperera?</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="f1_q2">
+                                    <button type="button" onclick="selectOption('f1_q2', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅰️ El seu gos Toby.</button>
+                                    <button type="button" onclick="selectOption('f1_q2', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅱️ La seua amiga Anna.</button>
+                                    <button type="button" onclick="selectOption('f1_q2', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅲 El professor de música.</button>
+                                </div>
+                                <div id="res_f1_q2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEXTO 2 -->
+                    <div class="mb-8 bg-sky-50/60 border-2 border-sky-200 rounded-2xl p-5">
+                        <div class="flex items-center justify-between border-b border-sky-200 pb-2 mb-3">
+                            <span class="font-black text-sky-900 uppercase text-xs tracking-wider">📄 Lectura 2 • Excursió a l'Albufera</span>
+                            <span class="text-xs font-bold bg-sky-200 text-sky-900 px-2.5 py-0.5 rounded-full">~95 paraules</span>
+                        </div>
+                        <p class="text-sm sm:text-base leading-relaxed text-slate-800 mb-4 bg-white p-4 rounded-xl border border-sky-100">
+                            Dissabte passat, la família de Pau va anar d'excursió en barca per l'Albufera de València. Feia un sol radiant i l'aigua estava molt tranquil·la. Durant el passeig van poder observar molts ocells aquàtics, com ara ànecs i garses blanques que volaven prop dels canyars. El barquer els va explicar que els pescadors d'allí pesquen llobarros i anguiles des de fa segles. Al migdia van dinar una paella valenciana boníssima davant del llac i van tornar a casa molt contents.
+                        </p>
+
+                        <div class="space-y-4">
+                            <!-- P2.1 -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <p class="font-bold text-slate-800 mb-2.5">3. Amb què va fer el passeig la família de Pau?</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="f1_q3">
+                                    <button type="button" onclick="selectOption('f1_q3', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅰️ Amb bicicleta de muntanya.</button>
+                                    <button type="button" onclick="selectOption('f1_q3', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅱️ Amb autobús turístic.</button>
+                                    <button type="button" onclick="selectOption('f1_q3', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅲 Amb barca per l'Albufera.</button>
+                                </div>
+                                <div id="res_f1_q3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                            </div>
+
+                            <!-- P2.2 -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <p class="font-bold text-slate-800 mb-2.5">4. Quins dos peixos es pesquen a l'Albufera segons el text?</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="f1_q4">
+                                    <button type="button" onclick="selectOption('f1_q4', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅰️ Llobarros i anguiles.</button>
+                                    <button type="button" onclick="selectOption('f1_q4', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅱️ Taurons i balenes.</button>
+                                    <button type="button" onclick="selectOption('f1_q4', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅲 Ànecs i garses blanques.</button>
+                                </div>
+                                <div id="res_f1_q4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TEXTO 3 -->
+                    <div class="mb-6 bg-emerald-50/60 border-2 border-emerald-200 rounded-2xl p-5">
+                        <div class="flex items-center justify-between border-b border-emerald-200 pb-2 mb-3">
+                            <span class="font-black text-emerald-900 uppercase text-xs tracking-wider">📄 Lectura 3 • El concert de la biblioteca</span>
+                            <span class="text-xs font-bold bg-emerald-200 text-emerald-900 px-2.5 py-0.5 rounded-full">~90 paraules</span>
+                        </div>
+                        <p class="text-sm sm:text-base leading-relaxed text-slate-800 mb-4 bg-white p-4 rounded-xl border border-emerald-100">
+                            Divendres de vesprada hi haurà una festa especial a la biblioteca del barri. Sis músics molt originals faran un concert utilitzant objectes quotidians de la cuina com a instruments: culleres de fusta, olles, gots d'aigua i fins i tot una batedora! L'entrada és gratuïta per a tots els xiquets i xiquetes de primer d'ESO. Quan acabe l'actuació, la bibliotecària regalarà un punt de llibre amb forma de nota musical a cada assistent.
+                        </p>
+
+                        <div class="space-y-4">
+                            <!-- P3.1 -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <p class="font-bold text-slate-800 mb-2.5">5. Què utilitzen els músics per a tocar en aquest concert?</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="f1_q5">
+                                    <button type="button" onclick="selectOption('f1_q5', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅰️ Pianos i violins antics.</button>
+                                    <button type="button" onclick="selectOption('f1_q5', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅱️ Objectes de cuina (olles, culleres, batedora...).</button>
+                                    <button type="button" onclick="selectOption('f1_q5', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅲 Guitarres elèctriques.</button>
+                                </div>
+                                <div id="res_f1_q5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                            </div>
+
+                            <!-- P3.2 -->
+                            <div class="bg-white p-4 rounded-xl border border-slate-200">
+                                <p class="font-bold text-slate-800 mb-2.5">6. Què regalarà la bibliotecària al final de l'actuació?</p>
+                                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="f1_q6">
+                                    <button type="button" onclick="selectOption('f1_q6', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅰️ Un punt de llibre amb forma de nota musical.</button>
+                                    <button type="button" onclick="selectOption('f1_q6', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅱️ Una batedora nova.</button>
+                                    <button type="button" onclick="selectOption('f1_q6', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 hover:border-indigo-400 font-semibold text-sm transition-all">🅲 Un diccionari valencià.</button>
+                                </div>
+                                <div id="res_f1_q6" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button onclick="checkFicha1()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all">
+                        <span data-va="✅ Comprovar les 3 Lectures" data-es="✅ Comprobar las 3 Lecturas">✅ Comprovar les 3 Lectures</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 2: ORDEN ALFABÉTICO VISUAL (CLICAR FICHAS) -->
+            <!-- ========================================== -->
+            <section id="sec-ficha2" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-800" data-va="🔤 Fitxa 2: Joc d'Ordenar Paraules (Pàg. 20)" data-es="🔤 Ficha 2: Juego de Ordenar Palabras (Pág. 20)">🔤 Fitxa 2: Joc d'Ordenar Paraules (Pàg. 20)</h2>
+                            <p class="text-sm text-slate-500" data-va="Prem les fitxes de paraules de una en una des de la primera (A) fins a l'última (Z)!" data-es="¡Pulsa las fichas de palabras de una en una desde la primera (A) hasta la última (Z)!">Prem les fitxes de paraules de una en una des de la primera (A) fins a l'última (Z)!</p>
+                        </div>
+                        <span id="score-ficha2" class="hidden px-4 py-2 rounded-xl font-extrabold text-sm"></span>
+                    </div>
+
+                    <!-- Mini recordatorio visual del alfabeto -->
+                    <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200 text-center text-xs sm:text-sm font-black text-indigo-900 mb-6 tracking-wider">
+                        A · B · C · D · E · F · G · H · I · J · K · L · M · N · O · P · Q · R · S · T · U · V · W · X · Y · Z
+                    </div>
+
+                    <div class="space-y-6 mb-6">
+                        <!-- JUEGO DE ORDENAR 1 -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="font-bold text-slate-800">1. Ordena aquestes 5 professions (clica-les en ordre alfabètic):</p>
+                                <button type="button" onclick="resetWordOrder('ord1')" class="text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded-lg">🔄 Esborrar</button>
+                            </div>
+                            <!-- Fichas desordenadas para pulsar -->
+                            <div id="ord1-pool" class="flex flex-wrap gap-2 mb-3">
+                                <button type="button" onclick="pickWord('ord1', 'veterinària', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">veterinària</button>
+                                <button type="button" onclick="pickWord('ord1', 'advocada', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">advocada</button>
+                                <button type="button" onclick="pickWord('ord1', 'metgessa', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">metgessa</button>
+                                <button type="button" onclick="pickWord('ord1', 'carter', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">carter</button>
+                                <button type="button" onclick="pickWord('ord1', 'historiadora', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">historiadora</button>
+                            </div>
+                            <!-- Caja donde aparecen ordenadas -->
+                            <div id="ord1-result" class="min-h-[46px] bg-white border-2 border-dashed border-slate-300 rounded-xl p-2 flex flex-wrap items-center gap-2 text-sm">
+                                <span class="text-slate-400 text-xs italic">Prem les paraules de dalt en ordre...</span>
+                            </div>
+                            <div id="res_ord1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- JUEGO DE ORDENAR 2 (Activitat 51a: gal·lés, gallec, gall, galerada) -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="font-bold text-slate-800">2. (Activitat 51.a) Ordena: <b>gal·lés, gallec, gall, galerada, galera, galió</b></p>
+                                <button type="button" onclick="resetWordOrder('ord2')" class="text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded-lg">🔄 Esborrar</button>
+                            </div>
+                            <div id="ord2-pool" class="flex flex-wrap gap-2 mb-3">
+                                <button type="button" onclick="pickWord('ord2', 'gal·lés', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">gal·lés</button>
+                                <button type="button" onclick="pickWord('ord2', 'gall', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">gall</button>
+                                <button type="button" onclick="pickWord('ord2', 'galera', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">galera</button>
+                                <button type="button" onclick="pickWord('ord2', 'galió', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">galió</button>
+                                <button type="button" onclick="pickWord('ord2', 'galerada', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">galerada</button>
+                                <button type="button" onclick="pickWord('ord2', 'gallec', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">gallec</button>
+                            </div>
+                            <div id="ord2-result" class="min-h-[46px] bg-white border-2 border-dashed border-slate-300 rounded-xl p-2 flex flex-wrap items-center gap-2 text-sm">
+                                <span class="text-slate-400 text-xs italic">Prem les paraules de dalt en ordre...</span>
+                            </div>
+                            <div id="res_ord2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- JUEGO DE ORDENAR 3 (Activitat 51d: traca, traç, traçat, tracció, tractor, tractat) -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="font-bold text-slate-800">3. (Truc de la Ç - Act. 51.d) Ordena: <b>traca, traç, traçat, tracció, tractor, tractat</b></p>
+                                <button type="button" onclick="resetWordOrder('ord3')" class="text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded-lg">🔄 Esborrar</button>
+                            </div>
+                            <div id="ord3-pool" class="flex flex-wrap gap-2 mb-3">
+                                <button type="button" onclick="pickWord('ord3', 'tractor', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">tractor</button>
+                                <button type="button" onclick="pickWord('ord3', 'traç', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">traç</button>
+                                <button type="button" onclick="pickWord('ord3', 'tracció', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">tracció</button>
+                                <button type="button" onclick="pickWord('ord3', 'traca', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">traca</button>
+                                <button type="button" onclick="pickWord('ord3', 'tractat', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">tractat</button>
+                                <button type="button" onclick="pickWord('ord3', 'traçat', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">traçat</button>
+                            </div>
+                            <div id="ord3-result" class="min-h-[46px] bg-white border-2 border-dashed border-slate-300 rounded-xl p-2 flex flex-wrap items-center gap-2 text-sm">
+                                <span class="text-slate-400 text-xs italic">Prem les paraules de dalt en ordre...</span>
+                            </div>
+                            <div id="res_ord3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- JUEGO DE ORDENAR 4 (Truc de L, L·L, LL) -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <div class="flex items-center justify-between mb-2">
+                                <p class="font-bold text-slate-800">4. (Truc de L / L·L / LL) Ordena: <b>calar, callista, caliu, cal·ligrafia</b></p>
+                                <button type="button" onclick="resetWordOrder('ord4')" class="text-xs font-bold bg-slate-200 hover:bg-slate-300 text-slate-700 px-3 py-1 rounded-lg">🔄 Esborrar</button>
+                            </div>
+                            <div id="ord4-pool" class="flex flex-wrap gap-2 mb-3">
+                                <button type="button" onclick="pickWord('ord4', 'cal·ligrafia', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">cal·ligrafia</button>
+                                <button type="button" onclick="pickWord('ord4', 'calar', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">calar</button>
+                                <button type="button" onclick="pickWord('ord4', 'callista', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">callista</button>
+                                <button type="button" onclick="pickWord('ord4', 'caliu', this)" class="word-chip bg-white hover:bg-indigo-50 border-2 border-indigo-300 text-indigo-900 font-bold px-3.5 py-2 rounded-xl shadow-sm text-sm transition-all">caliu</button>
+                            </div>
+                            <div id="ord4-result" class="min-h-[46px] bg-white border-2 border-dashed border-slate-300 rounded-xl p-2 flex flex-wrap items-center gap-2 text-sm">
+                                <span class="text-slate-400 text-xs italic">Prem les paraules de dalt en ordre...</span>
+                            </div>
+                            <div id="res_ord4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="checkFicha2()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all">
+                        <span data-va="✅ Comprovar Joc d'Ordre Alfabètic" data-es="✅ Comprobar Juego de Orden Alfabético">✅ Comprovar Joc d'Ordre Alfabètic</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 3: CAMPOS SEMÁNTICOS VISUAL (CAZADOR DE INTRUSAS) -->
+            <!-- ========================================== -->
+            <section id="sec-ficha3" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-800" data-va="🗂️ Fitxa 3: Caçador d'Intruses i Camps Semàntics" data-es="🗂️ Ficha 3: Cazador de Intrusas y Campos Semánticos">🗂️ Fitxa 3: Caçador d'Intruses i Camps Semàntics</h2>
+                            <p class="text-sm text-slate-500" data-va="Prem damunt de les targetes que NO pertanyen al grup!" data-es="¡Pulsa encima de las tarjetas que NO pertenecen al grupo!">Prem damunt de les targetes que NO pertanyen al grup!</p>
+                        </div>
+                        <span id="score-ficha3" class="hidden px-4 py-2 rounded-xl font-extrabold text-sm"></span>
+                    </div>
+
+                    <div class="space-y-6 mb-6">
+                        <!-- CAZADOR 1: COLORS (Act. 25) -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-3">1. 🎨 Camp semàntic dels <b>COLORS</b>: Toca les <b>2 paraules intruses</b>!</p>
+                            <div class="flex flex-wrap gap-2" id="intruder-g1">
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">roig</button>
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">blau</button>
+                                <button type="button" onclick="toggleIntruder(this, true)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">maig</button>
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">groc</button>
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">lila</button>
+                                <button type="button" onclick="toggleIntruder(this, true)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">febrer</button>
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">ocre</button>
+                            </div>
+                            <div id="res_int1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- CAZADOR 2: MOBLES (Act. 25) -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-3">2. 🪑 Camp semàntic dels <b>MOBLES</b>: Toca les <b>2 paraules intruses</b>!</p>
+                            <div class="flex flex-wrap gap-2" id="intruder-g2">
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">llit</button>
+                                <button type="button" onclick="toggleIntruder(this, true)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">març</button>
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">cadira</button>
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">sofà</button>
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">balancí</button>
+                                <button type="button" onclick="toggleIntruder(this, true)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">abril</button>
+                                <button type="button" onclick="toggleIntruder(this, false)" class="intruder-btn bg-white border-2 border-slate-200 px-3.5 py-2 rounded-xl font-bold text-sm">armari</button>
+                            </div>
+                            <div id="res_int2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- TARJETAS VISUALES CAMPO SEMÁNTICO (Act. 29) -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">3. 🦅 A quin camp semàntic pertanyen: <b>verderol, canari, teuladí, cadernera, oroneta</b>?</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="f3_q3">
+                                <button type="button" onclick="selectOption('f3_q3', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm text-center">🐦 Ocells (Aus)</button>
+                                <button type="button" onclick="selectOption('f3_q3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm text-center">🐟 Peixos</button>
+                                <button type="button" onclick="selectOption('f3_q3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm text-center">🦎 Rèptils</button>
+                            </div>
+                            <div id="res_f3_q3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">4. 🦎 A quin camp semàntic pertanyen: <b>sargantana, fardatxo, dragonet, cocodril, colobra, tortuga</b>?</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="f3_q4">
+                                <button type="button" onclick="selectOption('f3_q4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm text-center">🐝 Insectes</button>
+                                <button type="button" onclick="selectOption('f3_q4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm text-center">🎒 Material escolar</button>
+                                <button type="button" onclick="selectOption('f3_q4', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm text-center">🐊 Rèptils</button>
+                            </div>
+                            <div id="res_f3_q4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="checkFicha3()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all">
+                        <span data-va="✅ Comprovar Camps Semàntics" data-es="✅ Comprobar Campos Semánticos">✅ Comprovar Camps Semàntics</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 4: GÉNEROS LITERARIOS (BOTONES VISUALES) -->
+            <!-- ========================================== -->
+            <section id="sec-ficha4" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-800" data-va="🎭 Fitxa 4: Reconéixer els Gèneres Literaris" data-es="🎭 Ficha 4: Reconocer los Géneros Literarios">🎭 Fitxa 4: Reconéixer els Gèneres Literaris</h2>
+                            <p class="text-sm text-slate-500" data-va="Fixa't en la forma de cada text i prem la targeta del gènere correcte!" data-es="¡Fíjate en la forma de cada texto y pulsa la tarjeta del género correcto!">Fixa't en la forma de cada text i prem la targeta del gènere correcte!</p>
+                        </div>
+                        <span id="score-ficha4" class="hidden px-4 py-2 rounded-xl font-extrabold text-sm"></span>
+                    </div>
+
+                    <div class="space-y-5 mb-6">
+                        <!-- Fragmento 1: Teatre -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">1. Quin gènere literari és aquest fragment?</p>
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-300 font-mono text-sm mb-3 text-slate-800">
+                                <strong>MORGANA:</strong> (<em>Mirant dins de la motxilla nerviosa</em>) On he posat el quadern blau?<br>
+                                <strong>PAU:</strong> (<em>Assenyalant la taula</em>) Mira! Està davall de l'agenda!
+                            </div>
+                            <div class="grid grid-cols-3 gap-2" data-group="f4_q1">
+                                <button type="button" onclick="selectOption('f4_q1', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">📖 Narrativa</button>
+                                <button type="button" onclick="selectOption('f4_q1', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">🌹 Poesia</button>
+                                <button type="button" onclick="selectOption('f4_q1', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">🎭 Teatre</button>
+                            </div>
+                            <div id="res_f4_q1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Fragmento 2: Poesia -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">2. Quin gènere literari és aquest fragment?</p>
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-300 italic text-sm mb-3 text-slate-800 text-center">
+                                La lluna brilla en la mar,<br>
+                                les ones venen i van,<br>
+                                i un vaixell de somnis clars<br>
+                                va navegant fins demà.
+                            </div>
+                            <div class="grid grid-cols-3 gap-2" data-group="f4_q2">
+                                <button type="button" onclick="selectOption('f4_q2', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">📖 Narrativa</button>
+                                <button type="button" onclick="selectOption('f4_q2', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">🌹 Poesia</button>
+                                <button type="button" onclick="selectOption('f4_q2', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">🎭 Teatre</button>
+                            </div>
+                            <div id="res_f4_q2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Fragmento 3: Narrativa -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">3. Quin gènere literari és aquest fragment?</p>
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-300 text-sm mb-3 text-slate-800 leading-relaxed">
+                                Aquell matí de tardor, Morgana es va despertar abans que sonara el despertador. Estava molt emocionada perquè era el primer dia que portava la seua motxilla nova a l'institut.
+                            </div>
+                            <div class="grid grid-cols-3 gap-2" data-group="f4_q3">
+                                <button type="button" onclick="selectOption('f4_q3', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">📖 Narrativa</button>
+                                <button type="button" onclick="selectOption('f4_q3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">🌹 Poesia</button>
+                                <button type="button" onclick="selectOption('f4_q3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">🎭 Teatre</button>
+                            </div>
+                            <div id="res_f4_q3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Pregunta 4 -->
+                        <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">4. Quin gènere s'escriu en <b>vers</b>, s'agrupa en <b>estrofes</b> i expressa sentiments?</p>
+                            <div class="grid grid-cols-3 gap-2" data-group="f4_q4">
+                                <button type="button" onclick="selectOption('f4_q4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">📖 Narrativa</button>
+                                <button type="button" onclick="selectOption('f4_q4', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">🌹 Poesia</button>
+                                <button type="button" onclick="selectOption('f4_q4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm text-center">🎭 Teatre</button>
+                            </div>
+                            <div id="res_f4_q4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="checkFicha4()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all">
+                        <span data-va="✅ Comprovar Gèneres Literaris" data-es="✅ Comprobar Géneros Literarios">✅ Comprovar Gèneres Literaris</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 5: TALLER DE EXPRESIÓN ESCRITA     -->
+            <!-- ========================================== -->
+            <section id="sec-ficha5" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-emerald-200">
+                    <div class="border-b border-emerald-100 pb-4 mb-5">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase">Taller Guiat</span>
+                        <h2 class="text-xl font-extrabold text-slate-800 mt-2" data-va="✍️ Fitxa 5: Guia Fàcil d'Expressió Escrita" data-es="✍️ Ficha 5: Guía Fácil de Expresión Escrita">✍️ Fitxa 5: Guia Fàcil d'Expressió Escrita</h2>
+                        <p class="text-sm text-slate-500 mt-1" data-va="Segueix aquests 3 passos per a fer una redacció perfecta a l'examen sense quedar-te en blanc." data-es="Sigue estos 3 pasos para hacer una redacción perfecta en el examen sin quedarte en blanco.">Segueix aquests 3 passos per a fer una redacció perfecta a l'examen sense quedar-te en blanc.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm mb-5">
+                        <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-200">
+                            <span class="font-black text-emerald-900 block mb-1">1️⃣ Introducció (2 línies)</span>
+                            <p class="text-slate-700">Presenta el tema o el protagonista. <i>Ex: «Hui vull parlar sobre...» / «El cap de setmana passat...»</i></p>
+                        </div>
+                        <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-200">
+                            <span class="font-black text-emerald-900 block mb-1">2️⃣ Desenvolupament (4 línies)</span>
+                            <p class="text-slate-700">Explica què va passar amb connectors: <b>En primer lloc</b>, <b>A més a més</b>, <b>Després</b>...</p>
+                        </div>
+                        <div class="bg-emerald-50 p-3.5 rounded-xl border border-emerald-200">
+                            <span class="font-black text-emerald-900 block mb-1">3️⃣ Final / Opinió (2 línies)</span>
+                            <p class="text-slate-700">Acaba amb la teua opinió: <b>En conclusió</b>, <b>Per això</b>, m'ha agradat molt perquè...</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 mb-4">
+                        <label for="writing-area" class="block font-bold text-slate-800 mb-2">📝 Practica ací: Escriu 5-6 línies sobre el teu cap de setmana o el teu llibre preferit:</label>
+                        <textarea id="writing-area" rows="5" class="w-full bg-white border-2 border-slate-300 focus:border-emerald-500 rounded-xl p-3.5 text-sm text-slate-800 outline-none" placeholder="Escriu ací el teu text en valencià..."></textarea>
+                        <div id="writing-feedback" class="hidden mt-3 p-3.5 rounded-xl border text-sm"></div>
+                    </div>
+
+                    <div class="flex flex-wrap gap-3">
+                        <button type="button" onclick="checkWriting()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl shadow-md transition-all text-sm">
+                            ✅ Revisar el meu text
+                        </button>
+                        <button type="button" onclick="toggleModelText()" class="bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-5 py-2.5 rounded-xl border border-slate-300 transition-all text-sm">
+                            👀 Veure un exemple model
+                        </button>
+                    </div>
+
+                    <div id="writing-model" class="hidden mt-4 bg-amber-50 border border-amber-200 p-4 rounded-xl text-sm text-slate-800 leading-relaxed">
+                        <p class="font-extrabold text-amber-900 mb-1">🌟 Exemple model (75 paraules):</p>
+                        <p>«Dissabte passat vaig anar d'excursió amb la meua família a la muntanya. <b>En primer lloc</b>, vam caminar per un sender envoltat de pins i vam escoltar molts ocells. <b>A més a més</b>, vam veure una font d'aigua molt fresca i vam dinar tots junts a l'ombra. <b>En conclusió</b>, va ser un dia fantàstic perquè vam gaudir molt de la natura i vam descansar.»</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 6: 3 SIMULACROS DE EXAMEN (CON TEXTOS CORTOS Y BOTONES) -->
+            <!-- ========================================== -->
+            <section id="sec-examen" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border-2 border-amber-200">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-amber-100 pb-4 mb-5">
+                        <div>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase">🎮 Mode Control Real</span>
+                            <h2 class="text-2xl font-extrabold text-slate-800 mt-2" data-va="🏆 3 Simulacres Complets d'Examen" data-es="🏆 3 Simulacros Completos de Examen">🏆 3 Simulacres Complets d'Examen</h2>
+                            <p class="text-sm text-slate-500 mt-1" data-va="Cada simulacre inclou un text curtet i preguntes interactives dels 4 temes. Guanya les 3 medalles!" data-es="Cada simulacro incluye un texto cortito y preguntas interactivas de los 4 temas. ¡Gana las 3 medallas!">Cada simulacre inclou un text curtet i preguntes interactives dels 4 temes. Guanya les 3 medalles!</p>
+                        </div>
+                        <!-- Medallero -->
+                        <div class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-2xl border border-slate-200">
+                            <div id="medal-1" class="px-3 py-1.5 rounded-xl bg-slate-200 text-slate-500 text-xs font-extrabold flex items-center gap-1 transition-all">
+                                <span>🥉</span> <span>Control 1</span>
+                            </div>
+                            <div id="medal-2" class="px-3 py-1.5 rounded-xl bg-slate-200 text-slate-500 text-xs font-extrabold flex items-center gap-1 transition-all">
+                                <span>🥈</span> <span>Control 2</span>
+                            </div>
+                            <div id="medal-3" class="px-3 py-1.5 rounded-xl bg-slate-200 text-slate-500 text-xs font-extrabold flex items-center gap-1 transition-all">
+                                <span>🥇</span> <span>Control 3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selector de los 3 Simulacros -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-6">
+                        <button onclick="switchSimulacro(1)" id="btn-sim-1" class="sim-btn bg-amber-500 text-white font-extrabold py-3 px-2 sm:px-4 rounded-xl shadow-md text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                            <span>⭐</span> <span>Simulacre 1</span>
+                        </button>
+                        <button onclick="switchSimulacro(2)" id="btn-sim-2" class="sim-btn bg-slate-100 text-slate-600 hover:bg-amber-50 font-extrabold py-3 px-2 sm:px-4 rounded-xl border border-slate-200 text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                            <span>⭐⭐</span> <span>Simulacre 2</span>
+                        </button>
+                        <button onclick="switchSimulacro(3)" id="btn-sim-3" class="sim-btn bg-slate-100 text-slate-600 hover:bg-amber-50 font-extrabold py-3 px-2 sm:px-4 rounded-xl border border-slate-200 text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                            <span>⭐⭐⭐</span> <span>Simulacre 3</span>
+                        </button>
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- SIMULACRO 1                           -->
+                    <!-- ===================================== -->
+                    <div id="sim-panel-1" class="sim-panel space-y-5">
+                        <div class="flex items-center justify-between bg-amber-50 p-3.5 rounded-xl border border-amber-200">
+                            <span class="font-extrabold text-amber-900">⭐ Simulacre 1 (5 Preguntes • 10 Punts)</span>
+                            <span id="score-sim-1" class="hidden font-black text-base px-3 py-1 rounded-lg"></span>
+                        </div>
+
+                        <!-- Mini texto del Simulacro 1 -->
+                        <div class="bg-sky-50 border-2 border-sky-200 p-4 rounded-2xl text-sm text-slate-800 leading-relaxed">
+                            <span class="text-xs font-black uppercase text-sky-800 block mb-1">📄 Text del control (~85 paraules):</span>
+                            «Aquest estiu Marc ha adoptat un gosset blanc anomenat Neu. Tots els matins baixen junts al parc del barri a jugar amb una pilota groga. Neu és molt juganer i li encanta córrer darrere dels coloms, però mai els fa mal. Quan tornen a casa cansats, Marc li posa aigua fresca al seu bol i li raspalla el pèl suau. Des que Neu viu amb ells, tota la família està molt més alegre.»
+                        </div>
+
+                        <!-- P1: Comprensió -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">1. (Comprensió - 2 punts) De quin color és la pilota amb què juga Neu al parc?</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="s1_1">
+                                <button type="button" onclick="selectOption('s1_1', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">⚪ Blanca</button>
+                                <button type="button" onclick="selectOption('s1_1', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🟡 Groga</button>
+                                <button type="button" onclick="selectOption('s1_1', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🔵 Blava</button>
+                            </div>
+                            <div id="res_s1_1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P2: Ordre alfabètic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">2. (Ordre alfabètic - 2 punts) Quin és l'ordre correcte d'aquestes 4 paraules: <b>calar, callista, caliu, cal·ligrafia</b>?</p>
+                            <div class="grid grid-cols-1 gap-2" data-group="s1_2">
+                                <button type="button" onclick="selectOption('s1_2', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅰️ calar → caliu → cal·ligrafia → callista</button>
+                                <button type="button" onclick="selectOption('s1_2', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅱️ cal·ligrafia → callista → calar → caliu</button>
+                                <button type="button" onclick="selectOption('s1_2', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅲 calar → callista → cal·ligrafia → caliu</button>
+                            </div>
+                            <div id="res_s1_2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P3: Camp semàntic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">3. (Camp semàntic - 2 punts) Quina paraula NO pertany al camp semàntic de la <b>ROBA</b>?</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" data-group="s1_3">
+                                <button type="button" onclick="selectOption('s1_3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">👗 vestit</button>
+                                <button type="button" onclick="selectOption('s1_3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">👖 pantalons</button>
+                                <button type="button" onclick="selectOption('s1_3', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">📅 juliol</button>
+                                <button type="button" onclick="selectOption('s1_3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🧥 jaqueta</button>
+                            </div>
+                            <div id="res_s1_3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P4: Gènere literari -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">4. (Gènere literari - 2 punts) A quin gènere pertany el text de dalt sobre Marc i el seu gos Neu?</p>
+                            <div class="grid grid-cols-3 gap-2" data-group="s1_4">
+                                <button type="button" onclick="selectOption('s1_4', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">📖 Narrativa</button>
+                                <button type="button" onclick="selectOption('s1_4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">🌹 Poesia</button>
+                                <button type="button" onclick="selectOption('s1_4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">🎭 Teatre</button>
+                            </div>
+                            <div id="res_s1_4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P5: Ordre alfabètic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">5. (Ordre alfabètic - 2 punts) Com s'ordena la <b>ç</b> (ce trencada) en el diccionari?</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" data-group="s1_5">
+                                <button type="button" onclick="selectOption('s1_5', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅰️ Dins de la C normal (ex: forca → força).</button>
+                                <button type="button" onclick="selectOption('s1_5', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅱️ Al final de tot, després de la Z.</button>
+                            </div>
+                            <div id="res_s1_5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <button onclick="checkSimulacro(1)" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-md transition-all text-lg">
+                            🏆 Comprovar Simulacre 1
+                        </button>
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- SIMULACRO 2                           -->
+                    <!-- ===================================== -->
+                    <div id="sim-panel-2" class="sim-panel hidden space-y-5">
+                        <div class="flex items-center justify-between bg-amber-50 p-3.5 rounded-xl border border-amber-200">
+                            <span class="font-extrabold text-amber-900">⭐⭐ Simulacre 2 (5 Preguntes • 10 Punts)</span>
+                            <span id="score-sim-2" class="hidden font-black text-base px-3 py-1 rounded-lg"></span>
+                        </div>
+
+                        <!-- Mini texto del Simulacro 2 -->
+                        <div class="bg-purple-50 border-2 border-purple-200 p-4 rounded-2xl text-sm text-slate-800 leading-relaxed">
+                            <span class="text-xs font-black uppercase text-purple-800 block mb-1">📄 Text del control (~85 paraules):</span>
+                            «La setmana passada els alumnes de primer d'ESO vam visitar el museu de ciències. La guia ens va ensenyar l'esquelet gegant d'un dinosaure i després vam entrar al planetari per a veure les estreles i els planetes del sistema solar. El que més ens va agradar va ser un experiment on tocàvem una esfera metàl·lica i se'ns posaven els cabells de punta! Va ser una excursió molt divertida i vam aprendre moltíssim.»
+                        </div>
+
+                        <!-- P1: Comprensió -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">1. (Comprensió - 2 punts) Què passava quan els alumnes tocaven l'esfera metàl·lica?</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="s2_1">
+                                <button type="button" onclick="selectOption('s2_1', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅰️ Es posava a ploure.</button>
+                                <button type="button" onclick="selectOption('s2_1', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅱️ Se'ls posaven els cabells de punta.</button>
+                                <button type="button" onclick="selectOption('s2_1', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅲 S'apagaven els llums.</button>
+                            </div>
+                            <div id="res_s2_1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P2: Ordre alfabètic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">2. (Ordre alfabètic - 2 punts) Ordena aquestes professions: <b>veterinària, zeladora, uròloga, taxista</b></p>
+                            <div class="grid grid-cols-1 gap-2" data-group="s2_2">
+                                <button type="button" onclick="selectOption('s2_2', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅰️ uròloga → taxista → veterinària → zeladora</button>
+                                <button type="button" onclick="selectOption('s2_2', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅱️ taxista → uròloga → veterinària → zeladora</button>
+                            </div>
+                            <div id="res_s2_2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P3: Camp semàntic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">3. (Camp semàntic - 2 punts) A quin camp semàntic pertanyen: <b>parotet, mosquit, rantella, formiga, borinot</b>?</p>
+                            <div class="grid grid-cols-3 gap-2" data-group="s2_3">
+                                <button type="button" onclick="selectOption('s2_3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🐟 Peixos</button>
+                                <button type="button" onclick="selectOption('s2_3', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🐝 Insectes / Artròpodes</button>
+                                <button type="button" onclick="selectOption('s2_3', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🐦 Ocells</button>
+                            </div>
+                            <div id="res_s2_3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P4: Gènere literari -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">4. (Gènere literari - 2 punts) Quin gènere és aquest text:<br><i>«JOAN: (Obrint la porta) Ja he arribat!<br>ANNA: (Sorpresa) Que prompte has vingut!»</i>?</p>
+                            <div class="grid grid-cols-3 gap-2" data-group="s2_4">
+                                <button type="button" onclick="selectOption('s2_4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">📖 Narrativa</button>
+                                <button type="button" onclick="selectOption('s2_4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">🌹 Poesia</button>
+                                <button type="button" onclick="selectOption('s2_4', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">🎭 Teatre</button>
+                            </div>
+                            <div id="res_s2_4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P5: Camp semàntic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">5. (Camp semàntic - 2 punts) Quina paraula sobra en el grup de les <b>FRUITES</b>?</p>
+                            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2" data-group="s2_5">
+                                <button type="button" onclick="selectOption('s2_5', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🍌 plàtan</button>
+                                <button type="button" onclick="selectOption('s2_5', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🍓 maduixa</button>
+                                <button type="button" onclick="selectOption('s2_5', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">📅 desembre</button>
+                                <button type="button" onclick="selectOption('s2_5', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🍎 poma</button>
+                            </div>
+                            <div id="res_s2_5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <button onclick="checkSimulacro(2)" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-md transition-all text-lg">
+                            🏆 Comprovar Simulacre 2
+                        </button>
+                    </div>
+
+                    <!-- ===================================== -->
+                    <!-- SIMULACRO 3                           -->
+                    <!-- ===================================== -->
+                    <div id="sim-panel-3" class="sim-panel hidden space-y-5">
+                        <div class="flex items-center justify-between bg-amber-50 p-3.5 rounded-xl border border-amber-200">
+                            <span class="font-extrabold text-amber-900">⭐⭐⭐ Simulacre 3 (5 Preguntes • 10 Punts)</span>
+                            <span id="score-sim-3" class="hidden font-black text-base px-3 py-1 rounded-lg"></span>
+                        </div>
+
+                        <!-- Mini texto del Simulacro 3 -->
+                        <div class="bg-emerald-50 border-2 border-emerald-200 p-4 rounded-2xl text-sm text-slate-800 leading-relaxed">
+                            <span class="text-xs font-black uppercase text-emerald-800 block mb-1">📄 Text del control (~85 paraules):</span>
+                            «Cada diumenge de matí, Clara ajuda el seu avi Vicent a cuidar l'hortet del poble. Porten un cabàs amb eines de jardineria i reguen les tomaqueres, els enciams i les carlotes. L'avi li ha ensenyat a diferenciar les plantes aromàtiques per l'olor: la menta fa una olor molt fresca i el romer recorda la muntanya. Abans de tornar a dinar, sempre cullen un parell de taronges dolces de l'arbre.»
+                        </div>
+
+                        <!-- P1: Comprensió -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">1. (Comprensió - 2 punts) Com diferencien Clara i el seu avi les plantes aromàtiques?</p>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2" data-group="s3_1">
+                                <button type="button" onclick="selectOption('s3_1', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">👀 Pel color de les flors.</button>
+                                <button type="button" onclick="selectOption('s3_1', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">👃 Per l'olor que fan.</button>
+                                <button type="button" onclick="selectOption('s3_1', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">📏 Per l'altura de la tija.</button>
+                            </div>
+                            <div id="res_s3_1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P2: Ordre alfabètic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">2. (Ordre alfabètic - 2 punts) Quantes lletres té l'alfabet valencià?</p>
+                            <div class="grid grid-cols-3 gap-2" data-group="s3_2">
+                                <button type="button" onclick="selectOption('s3_2', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">22 lletres</button>
+                                <button type="button" onclick="selectOption('s3_2', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">26 lletres</button>
+                                <button type="button" onclick="selectOption('s3_2', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">30 lletres</button>
+                            </div>
+                            <div id="res_s3_2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P3: Ordre alfabètic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">3. (Ordre alfabètic - 2 punts) Ordena: <b>xapador, historiadora, ferrer, geògrafa</b></p>
+                            <div class="grid grid-cols-1 gap-2" data-group="s3_3">
+                                <button type="button" onclick="selectOption('s3_3', 'ok', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅰️ ferrer → geògrafa → historiadora → xapador</button>
+                                <button type="button" onclick="selectOption('s3_3', 'bad', this)" class="opt-btn text-left p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🅱️ geògrafa → ferrer → historiadora → xapador</button>
+                            </div>
+                            <div id="res_s3_3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P4: Gènere literari -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">4. (Gènere literari - 2 punts) A quin gènere pertany:<br><i>«Plou i fa sol,<br>les bruixes es pentinen,<br>plou i fa sol,<br>les bruixes porten dol.»</i>?</p>
+                            <div class="grid grid-cols-3 gap-2" data-group="s3_4">
+                                <button type="button" onclick="selectOption('s3_4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">📖 Narrativa</button>
+                                <button type="button" onclick="selectOption('s3_4', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">🌹 Poesia</button>
+                                <button type="button" onclick="selectOption('s3_4', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-extrabold text-sm">🎭 Teatre</button>
+                            </div>
+                            <div id="res_s3_4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- P5: Camp semàntic -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2.5">5. (Camp semàntic - 2 punts) A quin camp semàntic pertanyen: <b>tomaquera, enciam, carlota</b>?</p>
+                            <div class="grid grid-cols-3 gap-2" data-group="s3_5">
+                                <button type="button" onclick="selectOption('s3_5', 'ok', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🥕 Verdures / Hortalisses</button>
+                                <button type="button" onclick="selectOption('s3_5', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🪑 Mobles</button>
+                                <button type="button" onclick="selectOption('s3_5', 'bad', this)" class="opt-btn p-3 rounded-xl border-2 border-slate-200 bg-white hover:border-indigo-400 font-bold text-sm">🎨 Colors</button>
+                            </div>
+                            <div id="res_s3_5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <button onclick="checkSimulacro(3)" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-md transition-all text-lg">
+                            🏆 Comprovar Simulacre 3
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+            <p data-va="Quadern d'estudi adaptat per a Vega • Valencià 1r d'ESO • Molta sort demà! 🌟" data-es="Cuaderno de estudio adaptado para Vega • Valenciano 1º de ESO • ¡Mucha suerte mañana! 🌟">Quadern d'estudi adaptat per a Vega • Valencià 1r d'ESO • Molta sort demà! 🌟</p>
+        </footer>
+    </div>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        let currentLang = 'va';
+        const selectedOptions = {};
+        const wordOrders = { ord1: [], ord2: [], ord3: [], ord4: [] };
+
+        function openNotebook() {
+            document.getElementById('cover-screen').classList.add('hidden');
+            document.getElementById('app-container').classList.remove('hidden');
+            switchTab('teoria');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function backToCover() {
+            document.getElementById('app-container').classList.add('hidden');
+            document.getElementById('cover-screen').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function selectOption(group, val, btn) {
+            selectedOptions[group] = val;
+            const container = btn.parentElement;
+            container.querySelectorAll('.opt-btn').forEach(b => {
+                b.classList.remove('border-indigo-600', 'bg-indigo-50', 'text-indigo-950', 'ring-2', 'ring-indigo-300');
+                b.classList.add('border-slate-200', 'bg-white');
+            });
+            btn.classList.remove('border-slate-200', 'bg-white');
+            btn.classList.add('border-indigo-600', 'bg-indigo-50', 'text-indigo-950', 'ring-2', 'ring-indigo-300');
+        }
+
+        function pickWord(group, word, btn) {
+            if (btn.disabled) return;
+            btn.disabled = true;
+            btn.classList.add('opacity-40', 'cursor-not-allowed');
+            wordOrders[group].push(word);
+            renderWordOrder(group);
+        }
+
+        function resetWordOrder(group) {
+            wordOrders[group] = [];
+            const pool = document.getElementById(`${group}-pool`);
+            pool.querySelectorAll('.word-chip').forEach(b => {
+                b.disabled = false;
+                b.classList.remove('opacity-40', 'cursor-not-allowed');
+            });
+            renderWordOrder(group);
+            const resBox = document.getElementById(`res_${group}`);
+            if (resBox) resBox.classList.add('hidden');
+        }
+
+        function renderWordOrder(group) {
+            const box = document.getElementById(`${group}-result`);
+            if (wordOrders[group].length === 0) {
+                box.innerHTML = '<span class="text-slate-400 text-xs italic">Prem les paraules de dalt en ordre...</span>';
+                return;
+            }
+            box.innerHTML = wordOrders[group].map((w, idx) =>
+                `<span class="bg-indigo-600 text-white font-bold px-3 py-1 rounded-lg text-xs sm:text-sm shadow-sm">${idx + 1}. ${w}</span>`
+            ).join(' <span class="text-slate-400 font-bold">→</span> ');
+        }
+
+        function toggleIntruder(btn, isIntruder) {
+            const active = btn.getAttribute('data-selected') === 'true';
+            if (active) {
+                btn.setAttribute('data-selected', 'false');
+                btn.classList.remove('bg-rose-100', 'border-rose-500', 'text-rose-900', 'ring-2', 'ring-rose-300');
+                btn.classList.add('bg-white', 'border-slate-200');
+            } else {
+                btn.setAttribute('data-selected', 'true');
+                btn.classList.remove('bg-white', 'border-slate-200');
+                btn.classList.add('bg-rose-100', 'border-rose-500', 'text-rose-900', 'ring-2', 'ring-rose-300');
+            }
+            btn.setAttribute('data-is-intruder', isIntruder ? 'true' : 'false');
+        }
+        // FITXA 1: 3 Lectures Curtetes
+        function checkFicha1() {
+            let score = 0;
+            const items = [
+                { id: 'f1_q1', res: 'res_f1_q1', va: "Al text diu: «Morgana té <b>onze anys</b>... obri el seu <b>quadern blau</b> i apunta totes les idees».", es: "En el texto dice: «Morgana tiene <b>once años</b>... abre su <b>cuaderno azul</b> y apunta todas las ideas»." },
+                { id: 'f1_q2', res: 'res_f1_q2', va: "La seua amiga <b>Anna</b> la va llegir i juntes la van convertir en el millor conte de la classe.", es: "Su amiga <b>Anna</b> la leyó y juntas la convirtieron en el mejor cuento de la clase." },
+                { id: 'f1_q3', res: 'res_f1_q3', va: "Van anar d'excursió <b>en barca</b> per l'Albufera de València.", es: "Fueron de excursión <b>en barca</b> por la Albufera de Valencia." },
+                { id: 'f1_q4', res: 'res_f1_q4', va: "Al text explica que pesquen <b>llobarros i anguiles</b> (els ànecs i les garses són ocells).", es: "En el texto explica que pescan <b>lubinas y anguilas</b> (los patos y las garzas son pájaros)." },
+                { id: 'f1_q5', res: 'res_f1_q5', va: "Utilitzen <b>objectes quotidians de la cuina</b> com culleres de fusta, olles, gots i una batedora.", es: "Utilizan <b>objetos cotidianos de la cocina</b> como cucharas de madera, ollas, vasos y una batidora." },
+                { id: 'f1_q6', res: 'res_f1_q6', va: "La bibliotecària regalarà un <b>punt de llibre amb forma de nota musical</b>.", es: "La bibliotecaria regalará un <b>marcapáginas con forma de nota musical</b>." }
+            ];
+            items.forEach(item => {
+                const isOk = selectedOptions[item.id] === 'ok';
+                if (isOk) score++;
+                setQuestionFeedback(item.res, isOk, item.va, item.es);
+            });
+            setScoreBadge('score-ficha1', score, 6);
+        }
+
+        // FITXA 2: Joc d'Ordenar Paraules
+        function checkFicha2() {
+            let score = 0;
+            const solutions = [
+                {
+                    group: 'ord1', res: 'res_ord1',
+                    ans: ['advocada', 'carter', 'historiadora', 'metgessa', 'veterinària'],
+                    va: "Ordre correcte: <b>a</b>dvocada → <b>c</b>arter → <b>h</b>istoriadora → <b>m</b>etgessa → <b>v</b>eterinària.",
+                    es: "Orden correcto: <b>a</b>dvocada → <b>c</b>arter → <b>h</b>istoriadora → <b>m</b>etgessa → <b>v</b>eterinària."
+                },
+                {
+                    group: 'ord2', res: 'res_ord2',
+                    ans: ['galera', 'galerada', 'galió', 'gall', 'gallec', 'gal·lés'],
+                    va: "Ordre correcte: <b>galera → galerada → galió → gall → gallec → gal·lés</b>.",
+                    es: "Orden correcto: <b>galera → galerada → galió → gall → gallec → gal·lés</b>."
+                },
+                {
+                    group: 'ord3', res: 'res_ord3',
+                    ans: ['traç', 'traca', 'traçat', 'tracció', 'tractat', 'tractor'],
+                    va: "La <b>ç</b> s'ordena igual que la <b>c</b>: <b>traç → traca → traçat → tracció → tractat → tractor</b>.",
+                    es: "La <b>ç</b> se ordena igual que la <b>c</b>: <b>traç → traca → traçat → tracció → tractat → tractor</b>."
+                },
+                {
+                    group: 'ord4', res: 'res_ord4',
+                    ans: ['calar', 'caliu', 'cal·ligrafia', 'callista'],
+                    va: "La <b>l·l</b> i la <b>ll</b> van després de la <b>l</b> sola: <b>calar → caliu → cal·ligrafia → callista</b>.",
+                    es: "La <b>l·l</b> y la <b>ll</b> van después de la <b>l</b> sola: <b>calar → caliu → cal·ligrafia → callista</b>."
+                }
+            ];
+
+            solutions.forEach(s => {
+                const userArr = wordOrders[s.group];
+                const isOk = userArr.length === s.ans.length && userArr.every((v, i) => v === s.ans[i]);
+                if (isOk) score++;
+                setQuestionFeedback(s.res, isOk, s.va, s.es);
+            });
+            setScoreBadge('score-ficha2', score, 4);
+        }
+
+        // FITXA 3: Caçador d'Intruses i Camps Semàntics
+        function checkIntruderGroup(containerId) {
+            const btns = Array.from(document.querySelectorAll(`#${containerId} .intruder-btn`));
+            const selected = btns.filter(b => b.getAttribute('data-selected') === 'true');
+            const totalIntruders = btns.filter(b => b.getAttribute('data-is-intruder') === 'true');
+            return selected.length === totalIntruders.length && selected.every(b => b.getAttribute('data-is-intruder') === 'true');
+        }
+
+        function checkFicha3() {
+            let score = 0;
+
+            const ok1 = checkIntruderGroup('intruder-g1');
+            if (ok1) score++;
+            setQuestionFeedback('res_int1', ok1, "Les dues intruses són <b>maig</b> i <b>febrer</b> (pertanyen als mesos de l'any).", "Las dos intrusas son <b>maig</b> y <b>febrer</b> (pertenecen a los meses del año).");
+
+            const ok2 = checkIntruderGroup('intruder-g2');
+            if (ok2) score++;
+            setQuestionFeedback('res_int2', ok2, "Les dues intruses són <b>març</b> i <b>abril</b> (pertanyen als mesos de l'any).", "Las dos intrusas son <b>març</b> y <b>abril</b> (pertenecen a los meses del año).");
+
+            const ok3 = selectedOptions['f3_q3'] === 'ok';
+            if (ok3) score++;
+            setQuestionFeedback('res_f3_q3', ok3, "Tots són noms d'<b>ocells (aus)</b>.", "Todos son nombres de <b>pájaros (aves)</b>.");
+
+            const ok4 = selectedOptions['f3_q4'] === 'ok';
+            if (ok4) score++;
+            setQuestionFeedback('res_f3_q4', ok4, "Tots són noms de <b>rèptils</b>.", "Todos son nombres de <b>reptiles</b>.");
+
+            setScoreBadge('score-ficha3', score, 4);
+        }
+
+        // FITXA 4: Gèneres Literaris
+        function checkFicha4() {
+            let score = 0;
+            const items = [
+                { id: 'f4_q1', res: 'res_f4_q1', va: "És <b>Teatre</b> perquè parla cada personatge amb el seu nom davant i té <i>acotacions</i> entre parèntesis.", es: "Es <b>Teatro</b> porque habla cada personaje con su nombre delante y tiene <i>acotaciones</i> entre paréntesis." },
+                { id: 'f4_q2', res: 'res_f4_q2', va: "És <b>Poesia</b> perquè està escrita en <b>versos curts</b> que tenen ritme i rima.", es: "Es <b>Poesía</b> porque está escrita en <b>versos cortos</b> que tienen ritmo y rima." },
+                { id: 'f4_q3', res: 'res_f4_q3', va: "És <b>Narrativa</b> perquè un narrador conta en <b>prosa</b> què li passa a Morgana.", es: "Es <b>Narrativa</b> porque un narrador cuenta en <b>prosa</b> qué le pasa a Morgana." },
+                { id: 'f4_q4', res: 'res_f4_q4', va: "La <b>Poesia</b> s'escriu en vers, s'agrupa en estrofes i expressa sentiments.", es: "La <b>Poesía</b> se escribe en verso, se agrupa en estrofas y expresa sentimientos." }
+            ];
+            items.forEach(item => {
+                const isOk = selectedOptions[item.id] === 'ok';
+                if (isOk) score++;
+                setQuestionFeedback(item.res, isOk, item.va, item.es);
+            });
+            setScoreBadge('score-ficha4', score, 4);
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const btnVa = document.getElementById('btn-va');
+            const btnEs = document.getElementById('btn-es');
+            const cBtnVa = document.getElementById('cover-btn-va');
+            const cBtnEs = document.getElementById('cover-btn-es');
+
+            if (lang === 'va') {
+                if (btnVa) {
+                    btnVa.className = "px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-indigo-600 text-white shadow-sm";
+                    btnEs.className = "px-3 py-1.5 rounded-lg text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
+                }
+                if (cBtnVa) {
+                    cBtnVa.className = "px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-white text-indigo-700 shadow-sm";
+                    cBtnEs.className = "px-3 py-1.5 rounded-lg text-sm font-bold text-white hover:bg-white/10 transition-all";
+                }
+            } else {
+                if (btnEs) {
+                    btnEs.className = "px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-indigo-600 text-white shadow-sm";
+                    btnVa.className = "px-3 py-1.5 rounded-lg text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
+                }
+                if (cBtnEs) {
+                    cBtnEs.className = "px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-white text-indigo-700 shadow-sm";
+                    cBtnVa.className = "px-3 py-1.5 rounded-lg text-sm font-bold text-white hover:bg-white/10 transition-all";
+                }
+            }
+
+            document.querySelectorAll('[data-va]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${lang}`);
+            });
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById(`sec-${tabId}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                if (!btn.id.includes('examen') && !btn.id.includes('ficha5')) {
+                    btn.classList.add('bg-white', 'text-slate-600');
+                }
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-600');
+                activeBtn.classList.add('tab-active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setQuestionFeedback(elementId, isCorrect, textVa, textEs) {
+            const box = document.getElementById(elementId);
+            box.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-400', 'text-emerald-950', 'bg-rose-50', 'border-rose-400', 'text-rose-950');
+            const msg = currentLang === 'va' ? textVa : textEs;
+
+            if (isCorrect) {
+                box.classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-950');
+                box.innerHTML = `<span class="font-extrabold">✅ ${currentLang === 'va' ? 'Molt bé, Vega!' : '¡Muy bien, Vega!'}</span> ${msg}`;
+            } else {
+                box.classList.add('bg-rose-50', 'border-rose-400', 'text-rose-950');
+                box.innerHTML = `<span class="font-extrabold">❌ ${currentLang === 'va' ? 'Fixa\'t bé:' : 'Fíjate bien:'}</span> ${msg}`;
+            }
+        }
+
+        function setScoreBadge(elementId, score, total) {
+            const badge = document.getElementById(elementId);
+            badge.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-900', 'bg-amber-100', 'text-amber-900');
+            if (score >= Math.ceil(total * 0.7)) {
+                badge.classList.add('bg-emerald-100', 'text-emerald-900');
+                badge.textContent = currentLang === 'va' ? `🎉 ${score} / ${total} encerts! Genial!` : `🎉 ¡${score} / ${total} aciertos! ¡Genial!`;
+            } else {
+                badge.classList.add('bg-amber-100', 'text-amber-900');
+                badge.textContent = currentLang === 'va' ? `💪 ${score} / ${total} encerts. Llig els recuadres rojos!` : `💪 ${score} / ${total} aciertos. ¡Lee los recuadros rojos!`;
+            }
+        }
+
+        // TALLER DE EXPRESIÓN ESCRITA
+        function checkWriting() {
+            const text = document.getElementById('writing-area').value.trim();
+            const fb = document.getElementById('writing-feedback');
+            fb.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-400', 'text-emerald-950', 'bg-amber-50', 'border-amber-400', 'text-amber-950');
+
+            const words = text.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 20) {
+                fb.classList.add('bg-amber-50', 'border-amber-400', 'text-amber-950');
+                fb.innerHTML = `<p class="font-extrabold">✍️ Portes ${words.length} paraules!</p><p>Intenta escriure un poquet més (almenys 35-40 paraules en 2 o 3 paràgrafs curts). Usa els connectors de dalt: <i>En primer lloc..., A més a més..., En conclusió...</i></p>`;
+            } else {
+                const startsUpper = /^[A-ZÀÈÉÍÒÓÚ]/.test(text);
+                const endsDot = /[.!?]$/.test(text);
+                fb.classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-950');
+                fb.innerHTML = `<p class="font-extrabold">🌟 Molt ben fet, Vega! Has escrit ${words.length} paraules.</p>
+                <ul class="mt-1 space-y-1 text-xs">
+                    <li>${startsUpper ? '✅' : '⚠️'} Comença per majúscula.</li>
+                    <li>${endsDot ? '✅' : '⚠️'} Acaba amb un punt final.</li>
+                    <li>💡 Recorda revisar que has escrit paraules en valencià (<i>amb, però, molt, també, perquè</i>).</li>
+                </ul>`;
+            }
+        }
+
+        function toggleModelText() {
+            document.getElementById('writing-model').classList.toggle('hidden');
+        }
+
+        // SIMULACROS DE EXAMEN
+        function switchSimulacro(num) {
+            document.querySelectorAll('.sim-panel').forEach(p => p.classList.add('hidden'));
+            document.getElementById(`sim-panel-${num}`).classList.remove('hidden');
+
+            document.querySelectorAll('.sim-btn').forEach(btn => {
+                btn.className = "sim-btn bg-slate-100 text-slate-600 hover:bg-amber-50 font-extrabold py-3 px-2 sm:px-4 rounded-xl border border-slate-200 text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5";
+            });
+            document.getElementById(`btn-sim-${num}`).className = "sim-btn bg-amber-500 text-white font-extrabold py-3 px-2 sm:px-4 rounded-xl shadow-md text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5";
+        }
+
+        function checkSimulacro(num) {
+            let points = 0;
+
+            if (num === 1) {
+                const q1 = selectedOptions['s1_1'] === 'ok';
+                if (q1) points += 2;
+                setQuestionFeedback('res_s1_1', q1, "Al text diu: «jugar amb una <b>pilota groga</b>».", "En el texto dice: «jugar con una <b>pelota amarilla</b>».");
+
+                const q2 = selectedOptions['s1_2'] === 'ok';
+                if (q2) points += 2;
+                setQuestionFeedback('res_s1_2', q2, "Exemple de la pàgina 20: <b>calar → caliu → cal·ligrafia → callista</b>.", "Ejemplo de la página 20: <b>calar → caliu → cal·ligrafia → callista</b>.");
+
+                const q3 = selectedOptions['s1_3'] === 'ok';
+                if (q3) points += 2;
+                setQuestionFeedback('res_s1_3', q3, "<b>Juliol</b> és un mes de l'any, no una peça de roba.", "<b>Juliol</b> es un mes del año, no una prenda de ropa.");
+
+                const q4 = selectedOptions['s1_4'] === 'ok';
+                if (q4) points += 2;
+                setQuestionFeedback('res_s1_4', q4, "És <b>Narrativa</b> perquè un narrador conta una història en prosa.", "Es <b>Narrativa</b> porque un narrador cuenta una historia en prosa.");
+
+                const q5 = selectedOptions['s1_5'] === 'ok';
+                if (q5) points += 2;
+                setQuestionFeedback('res_s1_5', q5, "La <b>ç</b> s'ordena dins de la <b>C normal</b> (pàg. 20).", "La <b>ç</b> se ordena dentro de la <b>C normal</b> (pág. 20).");
+            }
+
+            if (num === 2) {
+                const q1 = selectedOptions['s2_1'] === 'ok';
+                if (q1) points += 2;
+                setQuestionFeedback('res_s2_1', q1, "Al text diu que <b>se'ls posaven els cabells de punta</b>.", "En el texto dice que <b>se les ponían los pelos de punta</b>.");
+
+                const q2 = selectedOptions['s2_2'] === 'ok';
+                if (q2) points += 2;
+                setQuestionFeedback('res_s2_2', q2, "Per inicials: <b>T</b>axista → <b>U</b>ròloga → <b>V</b>eterinària → <b>Z</b>eladora.", "Por iniciales: <b>T</b>axista → <b>U</b>ròloga → <b>V</b>eterinària → <b>Z</b>eladora.");
+
+                const q3 = selectedOptions['s2_3'] === 'ok';
+                if (q3) points += 2;
+                setQuestionFeedback('res_s2_3', q3, "Són noms d'<b>insectes / artròpodes</b> (activitat 29).", "Son nombres de <b>insectos / artrópodos</b> (actividad 29).");
+
+                const q4 = selectedOptions['s2_4'] === 'ok';
+                if (q4) points += 2;
+                setQuestionFeedback('res_s2_4', q4, "És <b>Teatre</b> perquè hi ha diàleg amb el nom del personatge davant i acotacions.", "Es <b>Teatro</b> porque hay diálogo con el nombre del personaje delante y acotaciones.");
+
+                const q5 = selectedOptions['s2_5'] === 'ok';
+                if (q5) points += 2;
+                setQuestionFeedback('res_s2_5', q5, "<b>Desembre</b> és un mes de l'any, no una fruita.", "<b>Desembre</b> es un mes del año, no una fruta.");
+            }
+
+            if (num === 3) {
+                const q1 = selectedOptions['s3_1'] === 'ok';
+                if (q1) points += 2;
+                setQuestionFeedback('res_s3_1', q1, "Al text diu: «diferenciar les plantes aromàtiques <b>per l'olor</b>».", "En el texto dice: «diferenciar las plantas aromáticas <b>por el olor</b>».");
+
+                const q2 = selectedOptions['s3_2'] === 'ok';
+                if (q2) points += 2;
+                setQuestionFeedback('res_s3_2', q2, "L'alfabet valencià consta de <b>26 lletres</b> (pàg. 20).", "El alfabeto valenciano consta de <b>26 letras</b> (pág. 20).");
+
+                const q3 = selectedOptions['s3_3'] === 'ok';
+                if (q3) points += 2;
+                setQuestionFeedback('res_s3_3', q3, "Per inicials: <b>F</b>errer → <b>G</b>eògrafa → <b>H</b>istoriadora → <b>X</b>apador.", "Por iniciales: <b>F</b>errer → <b>G</b>eògrafa → <b>H</b>istoriadora → <b>X</b>apador.");
+
+                const q4 = selectedOptions['s3_4'] === 'ok';
+                if (q4) points += 2;
+                setQuestionFeedback('res_s3_4', q4, "És <b>Poesia</b> perquè té versos curts i rima (<i>sol / dol</i>).", "Es <b>Poesía</b> porque tiene versos cortos y rima (<i>sol / dol</i>).");
+
+                const q5 = selectedOptions['s3_5'] === 'ok';
+                if (q5) points += 2;
+                setQuestionFeedback('res_s3_5', q5, "Tomaquera, enciam i carlota són <b>verdures / hortalisses</b>.", "Tomatera, lechuga y zanahoria son <b>verduras / hortalizas</b>.");
+            }
+
+            const scoreBadge = document.getElementById(`score-sim-${num}`);
+            scoreBadge.classList.remove('hidden', 'bg-emerald-600', 'bg-amber-600', 'text-white');
+            scoreBadge.classList.add(points >= 6 ? 'bg-emerald-600' : 'bg-amber-600', 'text-white');
+            scoreBadge.textContent = `Nota: ${points} / 10`;
+
+            if (points >= 6) {
+                const medal = document.getElementById(`medal-${num}`);
+                medal.classList.remove('bg-slate-200', 'text-slate-500');
+                medal.classList.add('bg-emerald-500', 'text-white', 'shadow-sm', 'scale-105');
+            }
+        }
+    </script>
+</body>
+</html>
