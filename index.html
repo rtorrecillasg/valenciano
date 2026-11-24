@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valencià 1r ESO - Quadern d'Estudi Adaptat de Vega</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+            color: #1e293b;
+        }
+        .tab-active {
+            background-color: #4f46e5;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.3);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.25s ease-out forwards;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- ========================================== -->
+    <!-- PORTADA PRINCIPAL PARA VEGA                -->
+    <!-- ========================================== -->
+    <div id="cover-screen" class="min-h-screen flex flex-col justify-between bg-gradient-to-br from-indigo-600 via-blue-600 to-teal-500 text-white p-4 sm:p-8">
+        <!-- Barra superior portada con selector de idioma -->
+        <div class="max-w-5xl w-full mx-auto flex justify-end">
+            <div class="flex items-center bg-white/20 backdrop-blur-md p-1 rounded-xl border border-white/30">
+                <button id="cover-btn-va" onclick="setLanguage('va')" class="px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-white text-indigo-700 shadow-sm">
+                    Valencià
+                </button>
+                <button id="cover-btn-es" onclick="setLanguage('es')" class="px-3 py-1.5 rounded-lg text-sm font-bold text-white hover:bg-white/10 transition-all">
+                    Castellano (Ajuda)
+                </button>
+            </div>
+        </div>
+
+        <!-- Centro de la portada -->
+        <div class="max-w-4xl w-full mx-auto my-auto text-center py-6 animate-fade-in">
+            <!-- Ilustración SVG temática de lectura, letras y teatro -->
+            <div class="bg-white/15 backdrop-blur-md rounded-3xl p-4 sm:p-5 max-w-xl mx-auto mb-6 border border-white/25 shadow-xl">
+                <svg class="w-full h-24 sm:h-28" viewBox="0 0 420 110">
+                    <!-- Libro abierto -->
+                    <path d="M90 85 Q150 75 210 88 Q270 75 330 85 L330 30 Q270 20 210 33 Q150 20 90 30 Z" fill="rgba(255,255,255,0.92)" stroke="#fde047" stroke-width="2.5"/>
+                    <line x1="210" y1="33" x2="210" y2="88" stroke="#94a3b8" stroke-width="2"/>
+                    <!-- Líneas de texto página izquierda -->
+                    <line x1="110" y1="45" x2="190" y2="43" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="110" y1="56" x2="185" y2="54" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="110" y1="67" x2="170" y2="65" stroke="#cbd5e1" stroke-width="3" stroke-linecap="round"/>
+                    <!-- Letras y símbolos página derecha -->
+                    <text x="232" y="56" font-size="18" font-weight="900" fill="#4f46e5">A B C</text>
+                    <text x="232" y="75" font-size="14" font-weight="800" fill="#0d9488">Ç · LL · L·L</text>
+                    <!-- Iconos flotantes -->
+                    <text x="42" y="65" font-size="32">📚</text>
+                    <text x="352" y="65" font-size="32">🎭</text>
+                    <text x="196" y="22" font-size="22">✨</text>
+                </svg>
+            </div>
+
+            <span class="inline-block bg-amber-300 text-amber-950 font-black text-xs sm:text-sm px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md mb-4" data-va="📖 1r d'ESO • Valencià: Tema 1 (Parlem?) 📖" data-es="📖 1º de ESO • Valenciano: Tema 1 (Parlem?) 📖">
+                📖 1r d'ESO • Valencià: Tema 1 (Parlem?) 📖
+            </span>
+
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight drop-shadow-md mb-3">
+                Quadern d'estudi adaptat per a <span class="text-amber-300 underline decoration-wavy decoration-amber-300/70">VEGA</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-blue-100 max-w-2xl mx-auto mb-8 font-medium" data-va="Tot el temari que entra demà explicat pas a pas, amb trucs visuals, exercicis autocorregibles i 3 simulacres d'examen!" data-es="¡Todo el temario que entra mañana explicado paso a paso, con trucos visuales, ejercicios autocorregibles y 3 simulacros de examen!">
+                Tot el temari que entra demà explicat pas a pas, amb trucs visuals, exercicis autocorregibles i 3 simulacres d'examen!
+            </p>
+
+            <!-- Tarjeta Principal Única Adaptada -->
+            <div class="max-w-2xl mx-auto text-left">
+                <button onclick="openNotebook()" class="w-full group bg-white text-slate-800 rounded-3xl p-6 sm:p-8 shadow-2xl border-4 border-amber-300 hover:scale-[1.02] transition-all flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-3 right-3 bg-amber-400 text-amber-950 text-xs font-black px-3 py-1 rounded-full uppercase shadow-sm" data-va="⭐ Material Adaptat • Examen Demà" data-es="⭐ Material Adaptado • Examen Mañana">
+                        ⭐ Material Adaptat • Examen Demà
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-2xl flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                                🎯
+                            </div>
+                            <div>
+                                <h2 class="text-2xl sm:text-3xl font-black text-indigo-950" data-va="Control de Valencià Adaptat" data-es="Control de Valenciano Adaptado">
+                                    Control de Valencià Adaptat
+                                </h2>
+                                <p class="text-xs font-bold text-indigo-600 uppercase tracking-wide" data-va="5 apartats exactes de la professora" data-es="5 apartados exactos de la profesora">
+                                    5 apartats exactes de la professora
+                                </p>
+                            </div>
+                        </div>
+
+                        <ul class="space-y-2 text-sm text-slate-700 mb-6 bg-slate-50 p-4 rounded-2xl border border-slate-200">
+                            <li data-va="1️⃣ <b>Comprensió escrita:</b> Lectura guiada de <i>Morgana</i> (Pasqual Alapont) i preguntes." data-es="1️⃣ <b>Comprensión escrita:</b> Lectura guiada de <i>Morgana</i> (Pasqual Alapont) y preguntas.">1️⃣ <b>Comprensió escrita:</b> Lectura guiada de <i>Morgana</i> (Pasqual Alapont) i preguntes.</li>
+                            <li data-va="2️⃣ <b>Ordre alfabètic:</b> L'alfabet valencià i els trucs de la <b>ç, ll i l·l</b> en el diccionari." data-es="2️⃣ <b>Orden alfabético:</b> El alfabeto valenciano y los trucos de la <b>ç, ll y l·l</b> en el diccionario.">2️⃣ <b>Ordre alfabètic:</b> L'alfabet valencià i els trucs de la <b>ç, ll i l·l</b> en el diccionari.</li>
+                            <li data-va="3️⃣ <b>Camps semàntics:</b> Agrupar paraules de la mateixa família de significat i trobar intruses." data-es="3️⃣ <b>Campos semánticos:</b> Agrupar palabras de la misma familia de significado y hallar intrusas.">3️⃣ <b>Camps semàntics:</b> Agrupar paraules de la mateixa família de significat i trobar intruses.</li>
+                            <li data-va="4️⃣ <b>Gèneres literaris:</b> Diferenciar <b>Narrativa, Poesia i Teatre</b> fàcilment." data-es="4️⃣ <b>Géneros literarios:</b> Diferenciar <b>Narrativa, Poesía y Teatro</b> fácilmente.">4️⃣ <b>Gèneres literaris:</b> Diferenciar <b>Narrativa, Poesia i Teatre</b> fàcilment.</li>
+                            <li data-va="5️⃣ <b>Expressió escrita:</b> Esquema pas a pas i connectors per a redactar sense bloquejar-se." data-es="5️⃣ <b>Expresión escrita:</b> Esquema paso a paso y conectores para redactar sin bloquearse.">5️⃣ <b>Expressió escrita:</b> Esquema pas a pas i connectors per a redactar sense bloquejar-se.</li>
+                        </ul>
+                    </div>
+
+                    <div class="w-full bg-indigo-600 group-hover:bg-indigo-700 text-white font-extrabold py-3.5 px-6 rounded-xl text-center shadow-md flex items-center justify-center gap-2 text-base sm:text-lg">
+                        <span data-va="Començar a repassar ara!" data-es="¡Empezar a repasar ahora!">Començar a repassar ara!</span>
+                        <span>➡️</span>
+                    </div>
+                </button>
+            </div>
+        </div>
+
+        <p class="text-center text-xs text-blue-100/90 font-medium" data-va="Fet a mida per a Vega • Ànim, que ho tens xupat! ✨" data-es="Hecho a medida para Vega • ¡Ánimo, que lo tienes chupado! ✨">
+            Fet a mida per a Vega • Ànim, que ho tens xupat! ✨
+        </p>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- CONTENEDOR DEL CUADERNO (OCULTO AL INICIO) -->
+    <!-- ========================================== -->
+    <div id="app-container" class="hidden min-h-screen flex flex-col">
+
+        <!-- Barra Superior Fija -->
+        <header class="bg-white border-b border-indigo-100 sticky top-0 z-50 shadow-sm">
+            <div class="max-w-5xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-3">
+                <div class="flex items-center gap-3">
+                    <button onclick="backToCover()" class="bg-slate-100 hover:bg-indigo-100 text-slate-700 hover:text-indigo-700 px-3 py-2 rounded-xl font-extrabold text-xs sm:text-sm transition-all border border-slate-200 flex items-center gap-1.5 shadow-sm">
+                        <span>🏠</span> <span data-va="Portada" data-es="Portada">Portada</span>
+                    </button>
+                    <div>
+                        <h1 class="text-base sm:text-xl font-extrabold text-slate-800 tracking-tight" data-va="🎯 Control de Valencià Adaptat • Vega" data-es="🎯 Control de Valenciano Adaptado • Vega">🎯 Control de Valencià Adaptat • Vega</h1>
+                        <p class="text-xs text-slate-500 font-medium" data-va="Comprensió • Ordre Alfabètic • Camps Semàntics • Gèneres • Expressió" data-es="Comprensión • Orden Alfabético • Campos Semánticos • Géneros • Expresión">Comprensió • Ordre Alfabètic • Camps Semàntics • Gèneres • Expressió</p>
+                    </div>
+                </div>
+
+                <!-- Botón Cambio de Idioma -->
+                <div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200">
+                    <button id="btn-va" onclick="setLanguage('va')" class="px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-indigo-600 text-white shadow-sm">
+                        Valencià
+                    </button>
+                    <button id="btn-es" onclick="setLanguage('es')" class="px-3 py-1.5 rounded-lg text-sm font-bold text-slate-600 hover:text-slate-900 transition-all">
+                        Castellano (Ajuda)
+                    </button>
+                </div>
+            </div>
+
+            <!-- Menú de Navegación por Pestañas -->
+            <nav class="max-w-5xl mx-auto px-4 pb-3 overflow-x-auto">
+                <div class="flex space-x-2 min-w-max">
+                    <button onclick="switchTab('teoria')" id="tab-teoria" class="tab-btn tab-active px-4 py-2 rounded-xl text-sm font-bold transition-all flex items-center gap-1.5">
+                        <span>📚</span> <span data-va="Teoria i Trucs" data-es="Teoría y Trucos">Teoria i Trucs</span>
+                    </button>
+                    <button onclick="switchTab('ficha1')" id="tab-ficha1" class="tab-btn bg-white text-slate-600 hover:bg-indigo-50 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-slate-200">
+                        <span data-va="📖 1. Comprensió" data-es="📖 1. Comprensión">📖 1. Comprensió</span>
+                    </button>
+                    <button onclick="switchTab('ficha2')" id="tab-ficha2" class="tab-btn bg-white text-slate-600 hover:bg-indigo-50 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-slate-200">
+                        <span data-va="🔤 2. Ordre Alfabètic" data-es="🔤 2. Orden Alfabético">🔤 2. Ordre Alfabètic</span>
+                    </button>
+                    <button onclick="switchTab('ficha3')" id="tab-ficha3" class="tab-btn bg-white text-slate-600 hover:bg-indigo-50 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-slate-200">
+                        <span data-va="🗂️ 3. Camps Semàntics" data-es="🗂️ 3. Campos Semánticos">🗂️ 3. Camps Semàntics</span>
+                    </button>
+                    <button onclick="switchTab('ficha4')" id="tab-ficha4" class="tab-btn bg-white text-slate-600 hover:bg-indigo-50 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-slate-200">
+                        <span data-va="🎭 4. Gèneres Literaris" data-es="🎭 4. Géneros Literarios">🎭 4. Gèneres Literaris</span>
+                    </button>
+                    <button onclick="switchTab('ficha5')" id="tab-ficha5" class="tab-btn bg-emerald-50 text-emerald-800 hover:bg-emerald-100 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-emerald-200">
+                        <span data-va="✍️ 5. Expressió Escrita" data-es="✍️ 5. Expresión Escrita">✍️ 5. Expressió Escrita</span>
+                    </button>
+                    <button onclick="switchTab('examen')" id="tab-examen" class="tab-btn bg-amber-50 text-amber-800 hover:bg-amber-100 px-4 py-2 rounded-xl text-sm font-bold transition-all border border-amber-200">
+                        <span data-va="🏆 3 Simulacres d'Examen" data-es="🏆 3 Simulacros de Examen">🏆 3 Simulacres d'Examen</span>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Contenedor Principal -->
+        <main class="flex-grow max-w-5xl w-full mx-auto px-4 py-6">
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 0: TEORÍA RESUMIDA Y TRUCOS        -->
+            <!-- ========================================== -->
+            <section id="sec-teoria" class="tab-content space-y-6 animate-fade-in">
+                
+                <!-- Banner Resumen -->
+                <div class="bg-indigo-600 text-white rounded-2xl p-5 shadow-md">
+                    <span class="bg-indigo-500 text-indigo-100 text-xs font-extrabold px-2.5 py-1 rounded-full uppercase">Guia Ràpida • Tema 1</span>
+                    <h2 class="text-lg sm:text-xl font-extrabold mt-1" data-va="Què has de recordar demà a l'examen?" data-es="¿Qué tienes que recordar mañana en el examen?">Què has de recordar demà a l'examen?</h2>
+                    <p class="text-sm text-indigo-100 mt-1" data-va="Llig aquests 4 quadres clars i després practica en les fitxes. Cada exercici et dirà al moment si està bé o per què has d'arreglar-lo!" data-es="Lee estos 4 cuadros claros y después practica en las fichas. ¡Cada ejercicio te dirá al momento si está bien o por qué debes arreglarlo!">Llig aquests 4 quadres clars i després practica en les fitxes. Cada exercici et dirà al moment si està bé o per què has d'arreglar-lo!</p>
+                </div>
+
+                <!-- BLOQUE 1: ORDEN ALFABÉTICO (PÁG. 20) -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-blue-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-blue-100 text-blue-800 font-extrabold px-3 py-1 rounded-lg text-sm">Pàgina 20</span>
+                        <h2 class="text-xl font-extrabold text-slate-800" data-va="🔤 1. L'Alfabet i l'Ordre Alfabètic" data-es="🔤 1. El Alfabeto y el Orden Alfabético">🔤 1. L'Alfabet i l'Ordre Alfabètic</h2>
+                    </div>
+
+                    <p class="text-sm text-slate-700 mb-3" data-va="L'alfabet valencià té <b>26 lletres</b>:" data-es="El alfabeto valenciano tiene <b>26 letras</b>:">L'alfabet valencià té <b>26 lletres</b>:</p>
+                    
+                    <div class="bg-slate-100 p-3 rounded-xl text-center font-black tracking-widest text-indigo-900 text-sm sm:text-base mb-4 border border-slate-200">
+                        A · B · C · D · E · F · G · H · I · J · K · L · M · N · O · P · Q · R · S · T · U · V · W · X · Y · Z
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                        <div class="bg-amber-50 p-4 rounded-xl border border-amber-200">
+                            <h3 class="font-extrabold text-amber-900 mb-2" data-va="💡 Com ordenar paraules pas a pas:" data-es="💡 Cómo ordenar palabras paso a paso:">💡 Com ordenar paraules pas a pas:</h3>
+                            <p class="text-slate-700 leading-relaxed" data-va="1. Mira la <b>primera lletra</b> de cada paraula.<br>2. Si comencen per la mateixa lletra, mira la <b>segona</b>; si coincideixen, la <b>tercera</b>, i així fins que siguen diferents.<br><i>Exemple:</i> <b>g</b>al·lés, <b>g</b>allec, <b>g</b>all, <b>g</b>alerada → Totes comencen per <b>gal-</b>. Mireu la 4a lletra: <b>e</b> (gal<b>e</b>rada), <b>l</b> (gal<b>l</b>, gal<b>l</b>ec, gal<b>l</b>és)." data-es="1. Mira la <b>primera letra</b> de cada palabra.<br>2. Si empiezan por la misma letra, mira la <b>segunda</b>; si coinciden, la <b>tercera</b>, y así hasta que sean diferentes.<br><i>Ejemplo:</i> <b>g</b>al·lés, <b>g</b>allec, <b>g</b>all, <b>g</b>alerada → Todas empiezan por <b>gal-</b>. Mira la 4ª letra: <b>e</b> (gal<b>e</b>rada), <b>l</b> (gal<b>l</b>, gal<b>l</b>ec, gal<b>l</b>és).">1. Mira la <b>primera lletra</b> de cada paraula.<br>2. Si comencen per la mateixa lletra, mira la <b>segona</b>; si coincideixen, la <b>tercera</b>, i així fins que siguen diferents.<br><i>Exemple:</i> <b>g</b>al·lés, <b>g</b>allec, <b>g</b>all, <b>g</b>alerada → Totes comencen per <b>gal-</b>. Mireu la 4a lletra: <b>e</b> (gal<b>e</b>rada), <b>l</b> (gal<b>l</b>, gal<b>l</b>ec, gal<b>l</b>és).</p>
+                        </div>
+
+                        <div class="bg-rose-50 p-4 rounded-xl border border-rose-200">
+                            <h3 class="font-extrabold text-rose-900 mb-2" data-va="🚨 TRUC D'EXAMEN! La Ç, la LL i la L·L:" data-es="🚨 ¡TRUCO DE EXAMEN! La Ç, la LL y la L·L:">🚨 TRUC D'EXAMEN! La Ç, la LL i la L·L:</h3>
+                            <ul class="space-y-2 text-slate-700">
+                                <li data-va="• <b>La Ç (ce trencada)</b> NO té un lloc propi: s'ordena igual que una <b>C normal</b>.<br><i>Ex:</i> for<b>c</b>a → for<b>ç</b>a → for<b>ç</b>ada (després de <i>forc-</i> va <i>forç-</i> perquè s'ordena segons la lletra següent: <b>a</b> va abans que <b>a-d-a</b>)." data-es="• <b>La Ç (ce trencada)</b> NO tiene un lugar propio: se ordena igual que una <b>C normal</b>.<br><i>Ej:</i> for<b>c</b>a → for<b>ç</b>a → for<b>ç</b>ada (después de <i>forc-</i> va <i>forç-</i> porque se ordena según la letra siguiente: <b>a</b> va antes que <b>a-d-a</b>).">• <b>La Ç (ce trencada)</b> NO té un lloc propi: s'ordena igual que una <b>C normal</b>.<br><i>Ex:</i> for<b>c</b>a → for<b>ç</b>a → for<b>ç</b>ada (després de <i>forc-</i> va <i>forç-</i> perquè s'ordena segons la lletra següent: <b>a</b> va abans que <b>a-d-a</b>).</li>
+                                <li data-va="• <b>El dígraf LL</b> i la <b>L·L (ele geminada)</b> s'ordenen dins de la <b>L</b>, com si foren dues eles (<b>l + l</b>).<br><i>Ex:</i> ca<b>l</b>ar → ca<b>l</b>iu → ca<b>l·l</b>igrafia → ca<b>ll</b>ista." data-es="• <b>El dígrafo LL</b> y la <b>L·L (ele geminada)</b> se ordenan dentro de la <b>L</b>, como si fueran dos eles (<b>l + l</b>).<br><i>Ej:</i> ca<b>l</b>ar → ca<b>l</b>iu → ca<b>l·l</b>igrafia → ca<b>ll</b>ista.">• <b>El dígraf LL</b> i la <b>L·L (ele geminada)</b> s'ordenen dins de la <b>L</b>, com si foren dues eles (<b>l + l</b>).<br><i>Ex:</i> ca<b>l</b>ar → ca<b>l</b>iu → ca<b>l·l</b>igrafia → ca<b>ll</b>ista.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 2: CAMPOS SEMÁNTICOS (PÁG. 15) -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-emerald-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-emerald-100 text-emerald-800 font-extrabold px-3 py-1 rounded-lg text-sm">Pàgina 15</span>
+                        <h2 class="text-xl font-extrabold text-slate-800" data-va="🗂️ 2. Els Camps Semàntics" data-es="🗂️ 2. Los Campos Semánticos">🗂️ 2. Els Camps Semàntics</h2>
+                    </div>
+
+                    <div class="bg-purple-50 border-l-4 border-purple-600 p-4 rounded-xl mb-4">
+                        <p class="text-xs font-extrabold uppercase text-purple-700 mb-1" data-va="📌 Definició del llibre:" data-es="📌 Definición del libro:">📌 Definició del llibre:</p>
+                        <p class="text-base font-bold text-slate-800" data-va="«Un <b>camp semàntic</b> és un conjunt de paraules relacionades entre si perquè fan referència a una <b>mateixa classe de realitats</b>.»" data-es="«Un <b>campo semántico</b> es un conjunto de palabras relacionadas entre sí porque hacen referencia a una <b>misma clase de realidades</b>.»">«Un <b>camp semàntic</b> és un conjunt de paraules relacionades entre si perquè fan referència a una <b>mateixa classe de realitats</b>.»</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-sm">
+                        <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200">
+                            <p class="font-extrabold text-emerald-900 mb-1">🎨 Colors</p>
+                            <p class="text-slate-700">negre, blanc, gris, marró, groc, roig, blau, verd, lila, morat, ocre...</p>
+                        </div>
+                        <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200">
+                            <p class="font-extrabold text-emerald-900 mb-1">🍎 Fruites</p>
+                            <p class="text-slate-700">plàtan, maduixa, meló, pinya, bresquilla, raïm, poma...</p>
+                        </div>
+                        <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200">
+                            <p class="font-extrabold text-emerald-900 mb-1">📅 Mesos de l'any</p>
+                            <p class="text-slate-700">gener, febrer, març, abril, maig, juny, juliol, agost, octubre, desembre...</p>
+                        </div>
+                        <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200">
+                            <p class="font-extrabold text-emerald-900 mb-1">🪑 Mobles</p>
+                            <p class="text-slate-700">llit, tauleta, cadira, sofà, balancí, butaca, armari, calaixera...</p>
+                        </div>
+                        <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200">
+                            <p class="font-extrabold text-emerald-900 mb-1">👕 Roba</p>
+                            <p class="text-slate-700">vestit, pantalons, camisa, brusa, banyador, jaqueta, caçadora...</p>
+                        </div>
+                        <div class="bg-emerald-50/70 p-3.5 rounded-xl border border-emerald-200">
+                            <p class="font-extrabold text-emerald-900 mb-1">🎒 Material escolar</p>
+                            <p class="text-slate-700">retolador, llapis, motxilla, carpeta, llibreta, bolígraf, goma...</p>
+                        </div>
+                    </div>
+
+                    <!-- Vocabulario nuevo de animales del ejercicio 29 del libro -->
+                    <div class="mt-4 bg-amber-50 p-4 rounded-xl border border-amber-200 text-sm">
+                        <p class="font-extrabold text-amber-900 mb-1" data-va="🦅 Vocabulari clau de l'activitat 29 del llibre (Important!):" data-es="🦅 Vocabulario clave de la actividad 29 del libro (¡Importante!):">🦅 Vocabulari clau de l'activitat 29 del llibre (Important!):</p>
+                        <ul class="space-y-1 text-slate-700">
+                            <li>• <b>Ocells (aus):</b> verderol, canari, teuladí (gorrión), cadernera (jilguero), oroneta (golondrina), soliguer (cernícalo).</li>
+                            <li>• <b>Peixos:</b> samaruc, lluç (merluza), llobarro (lubina), dorada, tenca, donzella.</li>
+                            <li>• <b>Insectes / Artròpodes:</b> parotet (libélula), mosquit, rantella (araña), formiga, tàvec (tábano), borinot (abejorro).</li>
+                            <li>• <b>Rèptils:</b> sargantana (lagartija), fardatxo (lagarto), dragonet (salamanquesa), cocodril, colobra (culebra), tortuga.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- BLOQUE 3: GÉNEROS LITERARIOS (TEMA 1) -->
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-purple-200">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="bg-purple-100 text-purple-800 font-extrabold px-3 py-1 rounded-lg text-sm">Literatura</span>
+                        <h2 class="text-xl font-extrabold text-slate-800" data-va="🎭 3. Els Tres Gèneres Literaris" data-es="🎭 3. Los Tres Géneros Literarios">🎭 3. Els Tres Gèneres Literaris</h2>
+                    </div>
+
+                    <p class="text-sm text-slate-700 mb-4" data-va="A l'examen et posaran fragments curts i hauràs de dir si són <b>Narrativa</b>, <b>Poesia</b> o <b>Teatre</b>. Mira que fàcil és reconéixer-los:" data-es="En el examen te pondrán fragmentos cortos y tendrás que decir si son <b>Narrativa</b>, <b>Poesía</b> o <b>Teatro</b>. Mira qué fácil es reconocerlos:">A l'examen et posaran fragments curts i hauràs de dir si són <b>Narrativa</b>, <b>Poesia</b> o <b>Teatre</b>. Mira que fàcil és reconéixer-los:</p>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
+                        <!-- Narrativa -->
+                        <div class="bg-sky-50 p-4 rounded-xl border-2 border-sky-200">
+                            <div class="text-2xl mb-1">📖</div>
+                            <h3 class="font-black text-sky-900 text-base mb-1">1. NARRATIVA</h3>
+                            <p class="text-slate-700 mb-2" data-va="• Explica una història amb un <b>narrador</b>, uns <b>personatges</b>, un lloc i un temps.<br>• Està escrita en <b>prosa</b> (línies seguides ocupant tot el marge, en paràgrafs).<br>• <i>Exemples:</i> contes, novel·les (com <i>Qui té por de Morgana</i>), llegendes." data-es="• Cuenta una historia con un <b>narrador</b>, unos <b>personajes</b>, un lugar y un tiempo.<br>• Está escrita en <b>prosa</b> (líneas seguidas ocupando todo el margen, en párrafos).<br>• <i>Ejemplos:</i> cuentos, novelas (como <i>Qui té por de Morgana</i>), leyendas.">• Explica una història amb un <b>narrador</b>, uns <b>personatges</b>, un lloc i un temps.<br>• Està escrita en <b>prosa</b> (línies seguides ocupant tot el marge, en paràgrafs).<br>• <i>Exemples:</i> contes, novel·les (com <i>Qui té por de Morgana</i>), llegendes.</p>
+                        </div>
+
+                        <!-- Poesia -->
+                        <div class="bg-pink-50 p-4 rounded-xl border-2 border-pink-200">
+                            <div class="text-2xl mb-1">🌹</div>
+                            <h3 class="font-black text-pink-900 text-base mb-1">2. POESIA (Lírica)</h3>
+                            <p class="text-slate-700 mb-2" data-va="• Expressa <b>sentiments i emocions</b> amb bellesa i ritme.<br>• Està escrita en <b>vers</b> (línies curtes centrades o a l'esquerra) agrupades en <b>estrofes</b>, i sol tindre <b>rima</b>.<br>• <i>Exemples:</i> poemes, cançons, rodolins." data-es="• Expresa <b>sentimientos y emociones</b> con belleza y ritmo.<br>• Está escrita en <b>verso</b> (líneas cortas) agrupadas en <b>estrofas</b>, y suele tener <b>rima</b>.<br>• <i>Ejemplos:</i> poemas, canciones, pareados.">• Expressa <b>sentiments i emocions</b> amb bellesa i ritme.<br>• Està escrita en <b>vers</b> (línies curtes centrades o a l'esquerra) agrupades en <b>estrofes</b>, i sol tindre <b>rima</b>.<br>• <i>Exemples:</i> poemes, cançons, rodolins.</p>
+                        </div>
+
+                        <!-- Teatre -->
+                        <div class="bg-amber-50 p-4 rounded-xl border-2 border-amber-200">
+                            <div class="text-2xl mb-1">🎭</div>
+                            <h3 class="font-black text-amber-900 text-base mb-1">3. TEATRE (Dramàtica)</h3>
+                            <p class="text-slate-700 mb-2" data-va="• Està pensada per a ser <b>representada en un escenari</b> per actors.<br>• No hi ha narrador: apareix el <b>nom del personatge en majúscules</b> davant del que diu (diàleg) i <b>acotacions</b> entre parèntesis.<br>• <i>Exemples:</i> obres de teatre, guions." data-es="• Está pensada para ser <b>representada en un escenario</b> por actores.<br>• No hay narrador: aparece el <b>nombre del personaje en mayúsculas</b> delante de lo que dice (diálogo) y <b>acotaciones</b> entre paréntesis.<br>• <i>Ejemplos:</i> obras de teatro, guiones.">• Està pensada per a ser <b>representada en un escenari</b> per actors.<br>• No hi ha narrador: apareix el <b>nom del personatge en majúscules</b> davant del que diu (diàleg) i <b>acotacions</b> entre parèntesis.<br>• <i>Exemples:</i> obres de teatre, guions.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 1: COMPRENSIÓN ESCRITA (PÁG. 10)   -->
+            <!-- ========================================== -->
+            <section id="sec-ficha1" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-800" data-va="📖 Fitxa 1: Comprensió Escrita (L'entrevista de Morgana)" data-es="📖 Ficha 1: Comprensión Escrita (La entrevista de Morgana)">📖 Fitxa 1: Comprensió Escrita (L'entrevista de Morgana)</h2>
+                            <p class="text-sm text-slate-500" data-va="Llig amb calma el text de la pàgina 10 i respon les preguntes. Et donem trucs per a trobar les respostes!" data-es="Lee con calma el texto de la página 10 y responde las preguntas. ¡Te damos trucos para encontrar las respuestas!">Llig amb calma el text de la pàgina 10 i respon les preguntes. Et donem trucs per a trobar les respostes!</p>
+                        </div>
+                        <span id="score-ficha1" class="hidden px-4 py-2 rounded-xl font-extrabold text-sm"></span>
+                    </div>
+
+                    <!-- Texto del libro (Pág. 10) -->
+                    <div class="bg-amber-50/60 border-2 border-amber-200 rounded-2xl p-5 mb-6 text-sm sm:text-base leading-relaxed text-slate-800 space-y-3">
+                        <div class="flex items-center justify-between border-b border-amber-200 pb-2 mb-2">
+                            <span class="font-black text-amber-900 uppercase text-xs tracking-wider">📄 Text del llibre (Pàgina 10)</span>
+                            <span class="text-xs font-bold text-amber-800">Entrevista a Pasqual Alapont</span>
+                        </div>
+                        <p><strong>—Benvinguts al nostre espai de llibres. Hui entrevistarem Pasqual Alapont. Com ho has fet per a posar-te en la pell d'una xiqueta d'onze anys?</strong><br>
+                        —Ai! Comencem difícil. És el treball d'un escriptor, posar-se en la pell dels seus personatges, i els personatges poden ser homes, dones, vampirs, dracs voladors... I l'escriptor el que intenta és entrar en eixa veu diferent, donar-li una personalitat i, bé, això és el que he intentat fer amb Morgana, que fora una xiqueta entre 11 i 12 anys, però que tinguera eixa ànima especial, no?</p>
+
+                        <p><strong>—Ja no utilitzem tant el Messenger i ara utilitzem més el WhatsApp. El proper llibre de Morgana l'hauries de fer sobre el WhatsApp, ho saps?</strong><br>
+                        —Segur, sí, sí. Però això sempre passa en la literatura. Imagina't. Tampoc hi ha ara... Els viatges que fan ara per la mar i tot això han canviat moltíssim, però, en canvi, encara ens agraden molt els llibres d'aventures dels pirates, no? <em>L'illa del tresor</em>, per exemple, és un llibre que es llegirà sempre i, en canvi, no té ni telèfons mòbils ni res d'això perquè és l'esperit de l'aventura. Però el que sí que passa, i et done la raó, és que els escriptors ens adaptem, en fi, a allò que ens envolta, a la realitat que ens envolta i, clar, lògicament, el pròxim llibre de Morgana hauria de contenir molts whatsapps.</p>
+
+                        <p><strong>—Quan et ve una idea, on la sols escriure?</strong><br>
+                        —Quan em ve una idea, em pose molt content, i al final del dia, potser, la idea acaba en la paperera. Perquè això passa molt sovint, no?, que tu vas tenint idees i tens els personatges i les històries que vols contar en el cap i vas apuntant moltes coses, però ja et dic, moltes coses acaben sent idees no tan brillants. I el que fa un escriptor és, eixes idees, que vagen... D'alguna manera, són llavors que van sembrant-se i intentes fer-les créixer, no?, fer créixer les històries. I moltes vegades també m'ha passat d'anar a la paperera on havia tirat una idea que pensava que era primer brillant i després que no ho era tant i al final dir «Ui, estaria bé rescatar-la, no?».</p>
+
+                        <p><strong>—Morgana repassa molt els continguts que dona l'escola. Tu, quan anaves a l'escola, com anaves?</strong><br>
+                        —Haha, bé, no era un alumne superbrillant, però tampoc no era un alumne dolent. M'interessaven les coses que aprenia, però també m'agradava molt jugar, m'agradava molt el pati, m'agradava molt estar amb els companys. Vaig tindre experiències molt boniques en l'escola i algunes també no tan boniques, però això és, en definitiva, créixer, no?, viure. I jo crec que, quan vaig escriure <em>Morgana</em> i molts dels llibres que he fet per a infants, un poc d'aquelles coses que jo vivia de menut a l'escola estan presents, un poc també estan presents.</p>
+
+                        <p><strong>—M'he quedat amb ganes de saber alguna cosa més sobre tu, i ara podries començar a escriure <em>El quadern blau de Pasqual Alapont</em>. (L'entrevistadora entrega un quadern a l'autor amb la seua foto en la portada.)</strong><br>
+                        —Ah! Moltes gràcies! Bé, està en blanc i per a un escriptor és fantàstic, perquè una pàgina en blanc és un estímul per a crear una història, per a agafar aquelles idees que hem dit que van un poc pel cap i tractar que es convertisquen en una narració bonica. En fi, agraïsc molt si és un regal, vos agraïsc molt el regal i esperaré, en el pròxim llibre de Morgana, utilitzar-lo.</p>
+                    </div>
+
+                    <!-- Preguntas de comprensión -->
+                    <div class="space-y-4 mb-6">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="1. Quin tipus de text hem llegit i qui és la persona entrevistada?" data-es="1. ¿Qué tipo de texto hemos leído y quién es la persona entrevistada?">1. Quin tipus de text hem llegit i qui és la persona entrevistada?</p>
+                            <select id="f1_q1" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">És una entrevista a l'escriptor Pasqual Alapont, autor del llibre «Qui té por de Morgana».</option>
+                                <option value="bad1">És un poema sobre un drac volador.</option>
+                                <option value="bad2">És una recepta de cuina escrita per Morgana.</option>
+                            </select>
+                            <div id="res_f1_q1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="2. Quina edat té el personatge de Morgana i com la descriu l'autor?" data-es="2. ¿Qué edad tiene el personaje de Morgana y cómo la describe el autor?">2. Quina edat té el personatge de Morgana i com la descriu l'autor?</p>
+                            <select id="f1_q2" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="bad1">És una professora d'escola de 40 anys.</option>
+                                <option value="ok">És una xiqueta d'entre 11 i 12 anys amb una ànima especial.</option>
+                                <option value="bad2">És una pirata que viatja en vaixell.</option>
+                            </select>
+                            <div id="res_f1_q2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="3. Amb què compara Pasqual Alapont les idees que li venen al cap?" data-es="3. ¿Con qué compara Pasqual Alapont las ideas que le vienen a la cabeza?">3. Amb què compara Pasqual Alapont les idees que li venen al cap?</p>
+                            <select id="f1_q3" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">Amb «llavors que van sembrant-se» i que intenta fer créixer per a convertir-les en històries.</option>
+                                <option value="bad1">Amb telèfons mòbils i missatges de WhatsApp.</option>
+                                <option value="bad2">Amb els deures de matemàtiques de l'escola.</option>
+                            </select>
+                            <div id="res_f1_q3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="4. Com era Pasqual Alapont quan anava a l'escola de menut?" data-es="4. ¿Cómo era Pasqual Alapont cuando iba a la escuela de pequeño?">4. Com era Pasqual Alapont quan anava a l'escola de menut?</p>
+                            <select id="f1_q4" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="bad1">Era l'alumne més brillant de tota la classe i no jugava mai al pati.</option>
+                                <option value="ok">No era superbrillant però tampoc dolent; li interessava aprendre i li agradava molt jugar al pati amb els companys.</option>
+                                <option value="bad2">No li agradava gens anar a l'escola ni estar amb els amics.</option>
+                            </select>
+                            <div id="res_f1_q4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="5. Què li regala l'entrevistadora al final i per què li fa tanta il·lusió?" data-es="5. ¿Qué le regala la entrevistadora al final y por qué le hace tanta ilusión?">5. Què li regala l'entrevistadora al final i per què li fa tanta il·lusió?</p>
+                            <select id="f1_q5" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">Un quadern blau amb la seua foto; perquè una pàgina en blanc és un estímul per a crear una història.</option>
+                                <option value="bad1">Un llibre de pirates de L'illa del tresor.</option>
+                                <option value="bad2">Una paperera nova per a tirar les idees.</option>
+                            </select>
+                            <div id="res_f1_q5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="checkFicha1()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all">
+                        <span data-va="✅ Comprovar Comprensió" data-es="✅ Comprobar Comprensión">✅ Comprovar Comprensió</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 2: ORDEN ALFABÉTICO (PÁG. 20)      -->
+            <!-- ========================================== -->
+            <section id="sec-ficha2" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-800" data-va="🔤 Fitxa 2: Ordenar Paraules Alfabèticament (Pàg. 20)" data-es="🔤 Ficha 2: Ordenar Palabras Alfabéticamente (Pág. 20)">🔤 Fitxa 2: Ordenar Paraules Alfabèticament (Pàg. 20)</h2>
+                            <p class="text-sm text-slate-500" data-va="Practica exactament els grups de paraules del llibre (amb ç, ll i l·l)!" data-es="¡Practica exactamente los grupos de palabras del libro (con ç, ll y l·l)!">Practica exactament els grups de paraules del llibre (amb ç, ll i l·l)!</p>
+                        </div>
+                        <span id="score-ficha2" class="hidden px-4 py-2 rounded-xl font-extrabold text-sm"></span>
+                    </div>
+
+                    <!-- Mini recordatorio visual del alfabeto -->
+                    <div class="bg-indigo-50 p-3 rounded-xl border border-indigo-200 text-center text-xs sm:text-sm font-black text-indigo-900 mb-6 tracking-wider">
+                        A · B · C · D · E · F · G · H · I · J · K · L · M · N · O · P · Q · R · S · T · U · V · W · X · Y · Z
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <!-- Ejercicio 51a del libro -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="1. (Activitat 51.a del llibre) Ordena alfabèticament: <b>gal·lés, gallec, gall, galerada, galera, galió</b>" data-es="1. (Actividad 51.a del libro) Ordena alfabéticamente: <b>gal·lés, gallec, gall, galerada, galera, galió</b>">1. (Activitat 51.a del llibre) Ordena alfabèticament: <b>gal·lés, gallec, gall, galerada, galera, galió</b></p>
+                            <select id="f2_q1" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria l'ordre correcte --</option>
+                                <option value="ok">galera → galerada → galió → gall → gallec → gal·lés</option>
+                                <option value="bad1">gal·lés → gall → gallec → galera → galerada → galió</option>
+                                <option value="bad2">galió → galera → galerada → gall → gal·lés → gallec</option>
+                            </select>
+                            <div id="res_f2_q1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Ejercicio 51b del libro -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="2. (Activitat 51.b del llibre) Ordena alfabèticament: <b>llacuna, llamp, llaç, llança, llana, llanda</b>" data-es="2. (Actividad 51.b del libro) Ordena alfabéticamente: <b>llacuna, llamp, llaç, llança, llana, llanda</b>">2. (Activitat 51.b del llibre) Ordena alfabèticament: <b>llacuna, llamp, llaç, llança, llana, llanda</b></p>
+                            <select id="f2_q2" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria l'ordre correcte --</option>
+                                <option value="bad1">llacuna → llana → llanda → llança → llamp → llaç</option>
+                                <option value="ok">llaç → llacuna → llamp → llana → llança → llanda</option>
+                                <option value="bad2">llamp → llaç → llacuna → llana → llanda → llança</option>
+                            </select>
+                            <div id="res_f2_q2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Ejercicio 51c del libro -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="3. (Activitat 51.c del llibre) Ordena alfabèticament: <b>col·lisió, còlic, col·lidir, collir, coll, collita</b>" data-es="3. (Actividad 51.c del libro) Ordena alfabéticamente: <b>col·lisió, còlic, col·lidir, collir, coll, collita</b>">3. (Activitat 51.c del llibre) Ordena alfabèticament: <b>col·lisió, còlic, col·lidir, collir, coll, collita</b></p>
+                            <select id="f2_q3" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria l'ordre correcte --</option>
+                                <option value="ok">còlic → coll → col·lidir → collir → col·lisió → collita</option>
+                                <option value="bad1">col·lidir → col·lisió → còlic → coll → collir → collita</option>
+                                <option value="bad2">còlic → col·lidir → col·lisió → coll → collir → collita</option>
+                            </select>
+                            <div id="res_f2_q3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Ejercicio 51d del libro -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="4. (Activitat 51.d del llibre) Ordena alfabèticament: <b>traca, traç, traçat, tracció, tractor, tractat</b>" data-es="4. (Actividad 51.d del libro) Ordena alfabéticamente: <b>traca, traç, traçat, tracció, tractor, tractat</b>">4. (Activitat 51.d del llibre) Ordena alfabèticament: <b>traca, traç, traçat, tracció, tractor, tractat</b></p>
+                            <select id="f2_q4" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria l'ordre correcte --</option>
+                                <option value="bad1">traç → traca → traçat → tracció → tractat → tractor</option>
+                                <option value="ok">traç → traca → traçat → tracció → tractat → tractor</option>
+                                <option value="bad2">traca → tracció → tractat → tractor → traç → traçat</option>
+                            </select>
+                            <div id="res_f2_q4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Ejercicio 50a del libro -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="5. (Activitat 50.a del llibre) Ordena les paraules d'aquesta oració: <b>«Els trons que ressonaven a les muntanyes semblaven cada volta més prop»</b>" data-es="5. (Actividad 50.a del libro) Ordena las palabras de esta oración: <b>«Els trons que ressonaven a les muntanyes semblaven cada volta més prop»</b>">5. (Activitat 50.a del llibre) Ordena les paraules d'aquesta oració: <b>«Els trons que ressonaven a les muntanyes semblaven cada volta més prop»</b></p>
+                            <select id="f2_q5" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria l'ordre correcte --</option>
+                                <option value="ok">a → cada → els → les → més → muntanyes → prop → que → ressonaven → semblaven → trons → volta</option>
+                                <option value="bad1">a → els → cada → les → muntanyes → més → prop → que → ressonaven → semblaven → trons → volta</option>
+                                <option value="bad2">cada → a → els → les → més → muntanyes → que → prop → ressonaven → semblaven → volta → trons</option>
+                            </select>
+                            <div id="res_f2_q5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="checkFicha2()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all">
+                        <span data-va="✅ Comprovar Ordre Alfabètic" data-es="✅ Comprobar Orden Alfabético">✅ Comprovar Ordre Alfabètic</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 3: CAMPOS SEMÁNTICOS (PÁG. 15)     -->
+            <!-- ========================================== -->
+            <section id="sec-ficha3" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-800" data-va="🗂️ Fitxa 3: Els Camps Semàntics (Pàg. 15)" data-es="🗂️ Ficha 3: Los Campos Semánticos (Pág. 15)">🗂️ Fitxa 3: Els Camps Semàntics (Pàg. 15)</h2>
+                            <p class="text-sm text-slate-500" data-va="Troba les paraules intruses i identifica a quin camp semàntic pertany cada grup." data-es="Encuentra las palabras intrusas e identifica a qué campo semántico pertenece cada grupo.">Troba les paraules intruses i identifica a quin camp semàntic pertany cada grup.</p>
+                        </div>
+                        <span id="score-ficha3" class="hidden px-4 py-2 rounded-xl font-extrabold text-sm"></span>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <!-- Act 25a -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="1. (Activitat 25) En el camp semàntic dels <b>COLORS</b>: <i>negre, blanc, gris, marró, groc, roig, blau, verd, lila, <b>maig</b>, morat, ocre, <b>febrer</b></i>. Quines dues paraules NO hi corresponen i de quin camp semàntic són?" data-es="1. (Actividad 25) En el campo semántico de los <b>COLORES</b>: <i>negre, blanc, gris, marró, groc, roig, blau, verd, lila, <b>maig</b>, morat, ocre, <b>febrer</b></i>. ¿Qué dos palabras NO corresponden y de qué campo semántico son?">1. (Activitat 25) En el camp semàntic dels <b>COLORS</b>: <i>negre, blanc, gris, marró, groc, roig, blau, verd, lila, <b>maig</b>, morat, ocre, <b>febrer</b></i>. Quines dues paraules NO hi corresponen i de quin camp semàntic són?</p>
+                            <select id="f3_q1" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">«Maig» i «febrer» no hi corresponen; pertanyen al camp semàntic dels mesos de l'any.</option>
+                                <option value="bad1">«Ocre» i «lila» no hi corresponen; són fruites.</option>
+                                <option value="bad2">«Blanc» i «negre» no hi corresponen; són mobles.</option>
+                            </select>
+                            <div id="res_f3_q1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Act 25b -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="2. (Activitat 25) En el camp semàntic de les <b>FRUITES</b>: <i>plàtan, maduixa, meló, <b>desembre</b>, pinya, bresquilla, <b>octubre</b>, raïm, poma</i>. Quines sobren?" data-es="2. (Actividad 25) En el campo semántico de las <b>FRUTAS</b>: <i>plàtan, maduixa, meló, <b>desembre</b>, pinya, bresquilla, <b>octubre</b>, raïm, poma</i>. ¿Cuáles sobran?">2. (Activitat 25) En el camp semàntic de les <b>FRUITES</b>: <i>plàtan, maduixa, meló, <b>desembre</b>, pinya, bresquilla, <b>octubre</b>, raïm, poma</i>. Quines sobren?</p>
+                            <select id="f3_q2" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="bad1">«Bresquilla» i «raïm» (són colors).</option>
+                                <option value="ok">«Desembre» i «octubre» (són mesos de l'any).</option>
+                                <option value="bad2">«Meló» i «pinya» (són peces de roba).</option>
+                            </select>
+                            <div id="res_f3_q2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Act 29a -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="3. (Activitat 29) A quin camp semàntic corresponen: <b>verderol, canari, teuladí, cadernera, oroneta, soliguer</b>?" data-es="3. (Actividad 29) ¿A qué campo semántico corresponden: <b>verderol, canari, teuladí, cadernera, oroneta, soliguer</b>?">3. (Activitat 29) A quin camp semàntic corresponen: <b>verderol, canari, teuladí, cadernera, oroneta, soliguer</b>?</p>
+                            <select id="f3_q3" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria el camp semàntic --</option>
+                                <option value="ok">Ocells (aus)</option>
+                                <option value="bad1">Peixos</option>
+                                <option value="bad2">Mobles de casa</option>
+                            </select>
+                            <div id="res_f3_q3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Act 29b -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="4. (Activitat 29) A quin camp semàntic corresponen: <b>samaruc, lluç, llobarro, dorada, tenca, donzella</b>?" data-es="4. (Actividad 29) ¿A qué campo semántico corresponden: <b>samaruc, lluç, llobarro, dorada, tenca, donzella</b>?">4. (Activitat 29) A quin camp semàntic corresponen: <b>samaruc, lluç, llobarro, dorada, tenca, donzella</b>?</p>
+                            <select id="f3_q4" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria el camp semàntic --</option>
+                                <option value="bad1">Rèptils</option>
+                                <option value="ok">Peixos</option>
+                                <option value="bad2">Instruments musicals</option>
+                            </select>
+                            <div id="res_f3_q4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Act 29c y d -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="5. (Activitat 29) A quin camp semàntic corresponen: <b>sargantana, fardatxo, dragonet, cocodril, colobra, tortuga</b>?" data-es="5. (Actividad 29) ¿A qué campo semántico corresponden: <b>sargantana, fardatxo, dragonet, cocodril, colobra, tortuga</b>?">5. (Activitat 29) A quin camp semàntic corresponen: <b>sargantana, fardatxo, dragonet, cocodril, colobra, tortuga</b>?</p>
+                            <select id="f3_q5" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria el camp semàntic --</option>
+                                <option value="bad1">Insectes</option>
+                                <option value="bad2">Assignatures de l'escola</option>
+                                <option value="ok">Rèptils</option>
+                            </select>
+                            <div id="res_f3_q5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="checkFicha3()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all">
+                        <span data-va="✅ Comprovar Camps Semàntics" data-es="✅ Comprobar Campos Semánticos">✅ Comprovar Camps Semàntics</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 4: GÉNEROS LITERARIOS              -->
+            <!-- ========================================== -->
+            <section id="sec-ficha4" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-slate-100">
+                    <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-4 mb-6">
+                        <div>
+                            <h2 class="text-xl font-extrabold text-slate-800" data-va="🎭 Fitxa 4: Reconéixer els Gèneres Literaris" data-es="🎭 Ficha 4: Reconocer los Géneros Literarios">🎭 Fitxa 4: Reconéixer els Gèneres Literaris</h2>
+                            <p class="text-sm text-slate-500" data-va="Llig cada fragment i tria si pertany a la NARRATIVA, a la POESIA o al TEATRE." data-es="Lee cada fragmento y elige si pertenece a la NARRATIVA, a la POESÍA o al TEATRO.">Llig cada fragment i tria si pertany a la NARRATIVA, a la POESIA o al TEATRE.</p>
+                        </div>
+                        <span id="score-ficha4" class="hidden px-4 py-2 rounded-xl font-extrabold text-sm"></span>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <!-- Fragmento 1: Teatre -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">1. Llig aquest fragment:</p>
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-300 font-mono text-sm mb-3 text-slate-800">
+                                <strong>MORGANA:</strong> (<em>Mirant dins de la motxilla nerviosa</em>) On he posat el quadern blau?<br>
+                                <strong>PAU:</strong> (<em>Assenyalant la taula</em>) Mira! Està davall de l'agenda!
+                            </div>
+                            <select id="f4_q1" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Quin gènere literari és? --</option>
+                                <option value="bad1">Narrativa</option>
+                                <option value="bad2">Poesia</option>
+                                <option value="ok">Teatre</option>
+                            </select>
+                            <div id="res_f4_q1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Fragmento 2: Poesia -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">2. Llig aquest fragment:</p>
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-300 italic text-sm mb-3 text-slate-800 text-center">
+                                La lluna brilla en la mar,<br>
+                                les ones venen i van,<br>
+                                i un vaixell de somnis clars<br>
+                                va navegant fins demà.
+                            </div>
+                            <select id="f4_q2" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Quin gènere literari és? --</option>
+                                <option value="ok">Poesia</option>
+                                <option value="bad1">Narrativa</option>
+                                <option value="bad2">Teatre</option>
+                            </select>
+                            <div id="res_f4_q2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Fragmento 3: Narrativa -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">3. Llig aquest fragment:</p>
+                            <div class="bg-white p-3.5 rounded-xl border border-slate-300 text-sm mb-3 text-slate-800 leading-relaxed">
+                                Aquell matí de tardor, Morgana es va despertar abans que sonara el despertador. Estava molt emocionada perquè era el primer dia que portava la seua motxilla nova a l'institut i volia ensenyar-la a tots els seus companys de classe.
+                            </div>
+                            <select id="f4_q3" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Quin gènere literari és? --</option>
+                                <option value="ok">Narrativa</option>
+                                <option value="bad1">Poesia</option>
+                                <option value="bad2">Teatre</option>
+                            </select>
+                            <div id="res_f4_q3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <!-- Pregunta teórica géneros -->
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="4. Quin gènere literari s'escriu en <b>vers</b>, s'agrupa en <b>estrofes</b> i expressa sentiments?" data-es="4. ¿Qué género literario se escribe en <b>verso</b>, se agrupa en <b>estrofas</b> y expresa sentimientos?">4. Quin gènere literari s'escriu en <b>vers</b>, s'agrupa en <b>estrofes</b> i expressa sentiments?</p>
+                            <select id="f4_q4" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="bad1">Narrativa</option>
+                                <option value="ok">Poesia</option>
+                                <option value="bad2">Teatre</option>
+                            </select>
+                            <div id="res_f4_q4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2" data-va="5. Quin gènere literari NO té narrador perquè els personatges parlen directament en un escenari?" data-es="5. ¿Qué género literario NO tiene narrador porque los personajes hablan directamente en un escenario?">5. Quin gènere literari NO té narrador perquè els personatges parlen directament en un escenari?</p>
+                            <select id="f4_q5" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="bad1">Narrativa</option>
+                                <option value="bad2">Poesia</option>
+                                <option value="ok">Teatre</option>
+                            </select>
+                            <div id="res_f4_q5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+                    </div>
+
+                    <button onclick="checkFicha4()" class="w-full sm:w-auto bg-indigo-600 hover:bg-indigo-700 text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all">
+                        <span data-va="✅ Comprovar Gèneres Literaris" data-es="✅ Comprobar Géneros Literarios">✅ Comprovar Gèneres Literaris</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 5: EXPRESIÓN ESCRITA (TALLER)      -->
+            <!-- ========================================== -->
+            <section id="sec-ficha5" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border border-emerald-200">
+                    <div class="border-b border-emerald-100 pb-4 mb-6">
+                        <span class="bg-emerald-100 text-emerald-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase">Taller d'Escriptura</span>
+                        <h2 class="text-2xl font-extrabold text-slate-800 mt-2" data-va="✍️ 5. Guia Fàcil per a l'Expressió Escrita" data-es="✍️ 5. Guía Fácil para la Expresión Escrita">✍️ 5. Guia Fàcil per a l'Expressió Escrita</h2>
+                        <p class="text-sm text-slate-600 mt-1" data-va="Si demà et demanen escriure una redacció curta (sobre tu, l'escola, una experiència o un personatge com Morgana), segueix aquests 3 passos i mai et quedaràs en blanc!" data-es="Si mañana te piden escribir una redacción corta (sobre ti, la escuela, una experiencia o un personaje como Morgana), ¡sigue estos 3 pasos y nunca te quedarás en blanco!">Si demà et demanen escriure una redacció curta (sobre tu, l'escola, una experiència o un personatge com Morgana), segueix aquests 3 passos i mai et quedaràs en blanc!</p>
+                    </div>
+
+                    <!-- Esquema de 3 párrafos -->
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6 text-sm">
+                        <div class="bg-sky-50 p-4 rounded-2xl border border-sky-200">
+                            <span class="bg-sky-600 text-white text-xs font-black px-2.5 py-1 rounded-lg">1r PARÀGRAF</span>
+                            <h3 class="font-extrabold text-sky-950 text-base mt-2 mb-1" data-va="Introducció (El començament)" data-es="Introducción (El comienzo)">Introducció (El començament)</h3>
+                            <p class="text-slate-700 mb-2" data-va="Presenta de què parlaràs, qui eres o on passa la història." data-es="Presenta de qué vas a hablar, quién eres o dónde pasa la historia.">Presenta de què parlaràs, qui eres o on passa la història.</p>
+                            <div class="bg-white p-2.5 rounded-xl border border-sky-200 text-xs font-semibold text-sky-900">
+                                💡 <b>Frases útils:</b><br>
+                                • <i>Hola, em dic... i tinc... anys.</i><br>
+                                • <i>Un dia d'aquest curs vaig viure...</i>
+                            </div>
+                        </div>
+
+                        <div class="bg-indigo-50 p-4 rounded-2xl border border-indigo-200">
+                            <span class="bg-indigo-600 text-white text-xs font-black px-2.5 py-1 rounded-lg">2n PARÀGRAF</span>
+                            <h3 class="font-extrabold text-indigo-950 text-base mt-2 mb-1" data-va="Desenvolupament (El més important)" data-es="Desarrollo (Lo más importante)">Desenvolupament (El més important)</h3>
+                            <p class="text-slate-700 mb-2" data-va="Explica 2 o 3 idees ordenades amb connectors." data-es="Explica 2 o 3 ideas ordenadas con conectores.">Explica 2 o 3 idees ordenades amb connectors.</p>
+                            <div class="bg-white p-2.5 rounded-xl border border-indigo-200 text-xs font-semibold text-indigo-900">
+                                💡 <b>Connectors màgics:</b><br>
+                                • <i>En primer lloc,...</i><br>
+                                • <i>A més a més,... / També...</i><br>
+                                • <i>Però / En canvi,...</i>
+                            </div>
+                        </div>
+
+                        <div class="bg-emerald-50 p-4 rounded-2xl border border-emerald-200">
+                            <span class="bg-emerald-600 text-white text-xs font-black px-2.5 py-1 rounded-lg">3r PARÀGRAF</span>
+                            <h3 class="font-extrabold text-emerald-950 text-base mt-2 mb-1" data-va="Conclusió (El final)" data-es="Conclusión (El final)">Conclusió (El final)</h3>
+                            <p class="text-slate-700 mb-2" data-va="Tanca el text amb la teua opinió o com et vas sentir." data-es="Cierra el texto con tu opinión o cómo te sentiste.">Tanca el text amb la teua opinió o com et vas sentir.</p>
+                            <div class="bg-white p-2.5 rounded-xl border border-emerald-200 text-xs font-semibold text-emerald-900">
+                                💡 <b>Frases per a acabar:</b><br>
+                                • <i>En conclusió, va ser...</i><br>
+                                • <i>En fi, m'ho vaig passar molt bé!</i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Checklist de oro -->
+                    <div class="bg-amber-50 p-4 rounded-2xl border border-amber-200 mb-6 text-sm">
+                        <h3 class="font-extrabold text-amber-950 mb-2" data-va="🔍 4 Trucs d'Or per a revisar el teu text abans d'entregar-lo:" data-es="🔍 4 Trucos de Oro para revisar tu texto antes de entregarlo:">🔍 4 Trucs d'Or per a revisar el teu text abans d'entregar-lo:</h3>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-slate-800">
+                            <div>✅ <b>Majúscules</b> al principi de frase i en noms propis (<i>Vega, València, Morgana</i>).</div>
+                            <div>✅ <b>Punts i comes</b> per a separar les idees i no fer frases interminables.</div>
+                            <div>✅ <b>Paraules en valencià:</b> <i>jo, meu/meua, hui, però, també, perquè, molt, amb</i>.</div>
+                            <div>✅ <b>Bona lletra i 3 paràgrafs</b> separats clarament.</div>
+                        </div>
+                    </div>
+
+                    <!-- Zona de práctica interactiva -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                        <h3 class="font-extrabold text-slate-800 mb-1" data-va="📝 Practica ací mateix (5-6 línies):" data-es="📝 Practica aquí mismo (5-6 líneas):">📝 Practica ací mateix (5-6 línies):</h3>
+                        <p class="text-xs text-slate-600 mb-3" data-va="<b>Tema de pràctica:</b> Explica com està sent el teu primer curs a l'institut (com va fer Pasqual Alapont recordant la seua escola): què t'agrada més, quines assignatures tens i com t'ho passes al pati." data-es="<b>Tema de práctica:</b> Explica cómo está siendo tu primer curso en el instituto (como hizo Pasqual Alapont recordando su escuela): qué te gusta más, qué asignaturas tienes y cómo lo pasas en el patio."><b>Tema de pràctica:</b> Explica com està sent el teu primer curs a l'institut (com va fer Pasqual Alapont recordant la seua escola): què t'agrada més, quines assignatures tens i com t'ho passes al pati.</p>
+                        
+                        <textarea id="writing-area" rows="5" class="w-full bg-white border-2 border-indigo-200 focus:border-indigo-500 rounded-xl p-3.5 text-sm text-slate-800 outline-none" placeholder="Escriu ací el teu text en valencià... (Ex: Hola, em dic Vega i estic fent primer d'ESO...)"></textarea>
+                        
+                        <div class="flex flex-wrap items-center justify-between gap-3 mt-3">
+                            <button onclick="checkWriting()" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-5 py-2.5 rounded-xl shadow-sm transition-all text-sm">
+                                <span data-va="✨ Revisar el meu text" data-es="✨ Revisar mi texto">✨ Revisar el meu text</span>
+                            </button>
+                            <button onclick="toggleModelText()" class="bg-white hover:bg-slate-100 text-indigo-700 border border-indigo-200 font-bold px-4 py-2.5 rounded-xl text-sm transition-all">
+                                <span data-va="👀 Veure un exemple model" data-es="👀 Ver un ejemplo modelo">👀 Veure un exemple model</span>
+                            </button>
+                        </div>
+
+                        <div id="writing-feedback" class="hidden mt-4 p-4 rounded-xl border text-sm"></div>
+                        <div id="writing-model" class="hidden mt-4 p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-sm text-slate-800">
+                            <p class="font-extrabold text-indigo-900 mb-1">🌟 Exemple model (8 línies perfectes):</p>
+                            <p class="leading-relaxed italic">«Hola, em dic Vega i enguany he començat primer d'ESO en el meu nou institut. Al principi estava un poc nerviosa, però ara estic molt contenta.<br>
+                            En primer lloc, m'agraden molt les classes de Música i d'Educació Física perquè són molt divertides. A més a més, els professors ens ajuden molt a entendre-ho tot. Al pati m'ho passe genial parlant i rient amb els meus amics i amigues.<br>
+                            En conclusió, aquest curs està sent una experiència molt bonica i espere aprendre moltes coses noves.»</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ========================================== -->
+            <!-- PESTAÑA 6: 3 SIMULACROS DE EXAMEN          -->
+            <!-- ========================================== -->
+            <section id="sec-examen" class="tab-content hidden space-y-6 animate-fade-in">
+                <div class="bg-white rounded-2xl p-6 card-shadow border-2 border-amber-200">
+                    <div class="flex flex-wrap items-center justify-between gap-4 border-b border-amber-100 pb-4 mb-5">
+                        <div>
+                            <span class="bg-amber-100 text-amber-800 text-xs font-extrabold px-3 py-1 rounded-full uppercase">🎮 Mode Control Real</span>
+                            <h2 class="text-2xl font-extrabold text-slate-800 mt-2" data-va="🏆 3 Simulacres Complets d'Examen" data-es="🏆 3 Simulacros Completos de Examen">🏆 3 Simulacres Complets d'Examen</h2>
+                            <p class="text-sm text-slate-500 mt-1" data-va="Cada simulacre barreja preguntes dels 4 blocs teòrics de la professora. Aconsegueix les 3 medalles d'or!" data-es="Cada simulacro mezcla preguntas de los 4 bloques teóricos de la profesora. ¡Consigue las 3 medallas de oro!">Cada simulacre barreja preguntes dels 4 blocs teòrics de la professora. Aconsegueix les 3 medalles d'or!</p>
+                        </div>
+                        <!-- Medallero -->
+                        <div class="flex items-center gap-2 bg-slate-50 p-2.5 rounded-2xl border border-slate-200">
+                            <div id="medal-1" class="px-3 py-1.5 rounded-xl bg-slate-200 text-slate-500 text-xs font-extrabold flex items-center gap-1 transition-all">
+                                <span>🥉</span> <span>Control 1</span>
+                            </div>
+                            <div id="medal-2" class="px-3 py-1.5 rounded-xl bg-slate-200 text-slate-500 text-xs font-extrabold flex items-center gap-1 transition-all">
+                                <span>🥈</span> <span>Control 2</span>
+                            </div>
+                            <div id="medal-3" class="px-3 py-1.5 rounded-xl bg-slate-200 text-slate-500 text-xs font-extrabold flex items-center gap-1 transition-all">
+                                <span>🥇</span> <span>Control 3</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Selector de los 3 Simulacros -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-6">
+                        <button onclick="switchSimulacro(1)" id="btn-sim-1" class="sim-btn bg-amber-500 text-white font-extrabold py-3 px-2 sm:px-4 rounded-xl shadow-md text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                            <span>⭐</span> <span>Simulacre 1</span>
+                        </button>
+                        <button onclick="switchSimulacro(2)" id="btn-sim-2" class="sim-btn bg-slate-100 text-slate-600 hover:bg-amber-50 font-extrabold py-3 px-2 sm:px-4 rounded-xl border border-slate-200 text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                            <span>⭐⭐</span> <span>Simulacre 2</span>
+                        </button>
+                        <button onclick="switchSimulacro(3)" id="btn-sim-3" class="sim-btn bg-slate-100 text-slate-600 hover:bg-amber-50 font-extrabold py-3 px-2 sm:px-4 rounded-xl border border-slate-200 text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5">
+                            <span>⭐⭐⭐</span> <span>Simulacre 3</span>
+                        </button>
+                    </div>
+
+                    <!-- SIMULACRO 1 -->
+                    <div id="sim-panel-1" class="sim-panel space-y-5">
+                        <div class="flex items-center justify-between bg-amber-50 p-3.5 rounded-xl border border-amber-200">
+                            <span class="font-extrabold text-amber-900">⭐ Simulacre 1 (5 Preguntes • 10 Punts)</span>
+                            <span id="score-sim-1" class="hidden font-black text-base px-3 py-1 rounded-lg"></span>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">1. (Comprensió - 2 punts) Segons l'entrevista a Pasqual Alapont, per què li agrada el llibre <i>L'illa del tresor</i> encara que no tinga telèfons mòbils?</p>
+                            <select id="s1_1" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">Perquè té l'esperit de l'aventura i per això es llegirà sempre.</option>
+                                <option value="bad1">Perquè parla molt del WhatsApp i del Messenger.</option>
+                                <option value="bad2">Perquè és un llibre molt curtet de dues pàgines.</option>
+                            </select>
+                            <div id="res_s1_1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">2. (Ordre alfabètic - 2 punts) Com s'ordena la lletra <b>ç</b> (ce trencada) en un diccionari valencià?</p>
+                            <select id="s1_2" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="bad1">Al final de tot l'alfabet, després de la Z.</option>
+                                <option value="ok">En l'ordre alfabètic de la C normal (ex: forca → força → forçada).</option>
+                                <option value="bad2">Abans de la lletra A.</option>
+                            </select>
+                            <div id="res_s1_2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">3. (Ordre alfabètic - 2 punts) Quin és l'ordre alfabètic correcte d'aquestes 4 paraules: <b>calar, callista, caliu, cal·ligrafia</b>?</p>
+                            <select id="s1_3" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria l'ordre correcte --</option>
+                                <option value="ok">calar → caliu → cal·ligrafia → callista</option>
+                                <option value="bad1">cal·ligrafia → callista → calar → caliu</option>
+                                <option value="bad2">calar → callista → cal·ligrafia → caliu</option>
+                            </select>
+                            <div id="res_s1_3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">4. (Camp semàntic - 2 punts) Quina paraula NO pertany al camp semàntic de la <b>ROBA</b>: <i>vestit, pantalons, camisa, banyador, juliol, jaqueta</i>?</p>
+                            <select id="s1_4" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la intrusa --</option>
+                                <option value="ok">«Juliol», perquè és un mes de l'any.</option>
+                                <option value="bad1">«Banyador», perquè és per a l'estiu.</option>
+                                <option value="bad2">«Jaqueta», perquè és per a l'hivern.</option>
+                            </select>
+                            <div id="res_s1_4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">5. (Gènere literari - 2 punts) A quin gènere pertany aquest text: <i>«El cavaller va pujar al seu cavall blanc i va travessar el bosc fosc buscant el castell encantat.»</i>?</p>
+                            <select id="s1_5" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria el gènere --</option>
+                                <option value="ok">Narrativa</option>
+                                <option value="bad1">Poesia</option>
+                                <option value="bad2">Teatre</option>
+                            </select>
+                            <div id="res_s1_5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <button onclick="checkSimulacro(1)" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-md transition-all text-lg">
+                            🏆 Comprovar Simulacre 1
+                        </button>
+                    </div>
+
+                    <!-- SIMULACRO 2 -->
+                    <div id="sim-panel-2" class="sim-panel hidden space-y-5">
+                        <div class="flex items-center justify-between bg-amber-50 p-3.5 rounded-xl border border-amber-200">
+                            <span class="font-extrabold text-amber-900">⭐⭐ Simulacre 2 (5 Preguntes • 10 Punts)</span>
+                            <span id="score-sim-2" class="hidden font-black text-base px-3 py-1 rounded-lg"></span>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">1. (Comprensió - 2 punts) Què fa Pasqual Alapont quan tira una idea a la paperera i després pensa que potser no era tan dolenta?</p>
+                            <select id="s2_1" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">Va a la paperera i la rescata per a aprofitar-la.</option>
+                                <option value="bad1">No la torna a mirar mai més.</option>
+                                <option value="bad2">Li la regala a l'entrevistadora.</option>
+                            </select>
+                            <div id="res_s2_1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">2. (Ordre alfabètic - 2 punts) Ordena aquestes professions de l'activitat 48: <b>veterinària, zeladora, uròloga, taxista</b></p>
+                            <select id="s2_2" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria l'ordre correcte --</option>
+                                <option value="bad1">uròloga → taxista → veterinària → zeladora</option>
+                                <option value="ok">taxista → uròloga → veterinària → zeladora</option>
+                                <option value="bad2">zeladora → veterinària → uròloga → taxista</option>
+                            </select>
+                            <div id="res_s2_2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">3. (Camp semàntic - 2 punts) Què és un camp semàntic?</p>
+                            <select id="s2_3" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la definició correcta --</option>
+                                <option value="ok">Un conjunt de paraules relacionades entre si perquè fan referència a una mateixa classe de realitats.</option>
+                                <option value="bad1">Una llista de paraules ordenades de la A a la Z.</option>
+                                <option value="bad2">Un conjunt de versos que rimen al final.</option>
+                            </select>
+                            <div id="res_s2_3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">4. (Camp semàntic - 2 punts) A quin camp semàntic pertanyen: <b>parotet, mosquit, rantella, formiga, tàvec, borinot</b>?</p>
+                            <select id="s2_4" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria el camp semàntic --</option>
+                                <option value="bad1">Peixos</option>
+                                <option value="ok">Insectes / Artròpodes (bestioles)</option>
+                                <option value="bad2">Ocells</option>
+                            </select>
+                            <div id="res_s2_4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">5. (Gènere literari - 2 punts) A quin gènere pertany aquest fragment:<br><i>«JOAN: (Obrint la porta) Ja he arribat!<br>ANNA: (Sorpresa) Que prompte has vingut!»</i>?</p>
+                            <select id="s2_5" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria el gènere --</option>
+                                <option value="bad1">Narrativa</option>
+                                <option value="bad2">Poesia</option>
+                                <option value="ok">Teatre</option>
+                            </select>
+                            <div id="res_s2_5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <button onclick="checkSimulacro(2)" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-md transition-all text-lg">
+                            🏆 Comprovar Simulacre 2
+                        </button>
+                    </div>
+
+                    <!-- SIMULACRO 3 -->
+                    <div id="sim-panel-3" class="sim-panel hidden space-y-5">
+                        <div class="flex items-center justify-between bg-amber-50 p-3.5 rounded-xl border border-amber-200">
+                            <span class="font-extrabold text-amber-900">⭐⭐⭐ Simulacre 3 (5 Preguntes • 10 Punts)</span>
+                            <span id="score-sim-3" class="hidden font-black text-base px-3 py-1 rounded-lg"></span>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">1. (Ordre alfabètic - 2 punts) Quantes lletres té l'alfabet valencià?</p>
+                            <select id="s3_1" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">26 lletres (la ç, la ll i la l·l s'ordenen dins de la C i la L).</option>
+                                <option value="bad1">29 lletres.</option>
+                                <option value="bad2">22 lletres.</option>
+                            </select>
+                            <div id="res_s3_1" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">2. (Ordre alfabètic - 2 punts) Ordena: <b>xapador, historiadora, ferrer, geògrafa</b></p>
+                            <select id="s3_2" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria l'ordre correcte --</option>
+                                <option value="ok">ferrer → geògrafa → historiadora → xapador</option>
+                                <option value="bad1">geògrafa → ferrer → historiadora → xapador</option>
+                                <option value="bad2">xapador → historiadora → geògrafa → ferrer</option>
+                            </select>
+                            <div id="res_s3_2" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">3. (Camp semàntic - 2 punts) En el camp semàntic dels <b>MOBLES</b>: <i>llit, tauleta, cadira, <b>març</b>, sofà, balancí, <b>abril</b>, butaca, armari</i>. Quines sobren?</p>
+                            <select id="s3_3" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">«Març» i «abril» (pertanyen als mesos de l'any).</option>
+                                <option value="bad1">«Balancí» i «butaca» (són fruites).</option>
+                                <option value="bad2">«Tauleta» i «armari» (són colors).</option>
+                            </select>
+                            <div id="res_s3_3" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">4. (Gènere literari - 2 punts) A quin gènere pertany:<br><i>«Plou i fa sol,<br>les bruixes es pentinen,<br>plou i fa sol,<br>les bruixes porten dol.»</i>?</p>
+                            <select id="s3_4" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria el gènere --</option>
+                                <option value="bad1">Narrativa</option>
+                                <option value="ok">Poesia</option>
+                                <option value="bad2">Teatre</option>
+                            </select>
+                            <div id="res_s3_4" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <p class="font-bold text-slate-800 mb-2">5. (Gèneres literaris - 2 punts) Quins són els 3 grans gèneres literaris que hem estudiat al Tema 1?</p>
+                            <select id="s3_5" class="w-full bg-white border-2 border-slate-300 rounded-lg p-2.5 font-semibold">
+                                <option value="">-- Tria la resposta correcta --</option>
+                                <option value="ok">Narrativa, Poesia i Teatre.</option>
+                                <option value="bad1">Alfabet, Diccionari i Camp semàntic.</option>
+                                <option value="bad2">Prosa, Rima i Acotació.</option>
+                            </select>
+                            <div id="res_s3_5" class="hidden mt-3 p-3 rounded-lg border text-sm"></div>
+                        </div>
+
+                        <button onclick="checkSimulacro(3)" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-extrabold px-6 py-3.5 rounded-xl shadow-md transition-all text-lg">
+                            🏆 Comprovar Simulacre 3
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+            <p data-va="Quadern d'estudi adaptat per a Vega • Valencià 1r d'ESO • Molta sort demà! 🌟" data-es="Cuaderno de estudio adaptado para Vega • Valenciano 1º de ESO • ¡Mucha suerte mañana! 🌟">Quadern d'estudi adaptat per a Vega • Valencià 1r d'ESO • Molta sort demà! 🌟</p>
+        </footer>
+    </div>
+
+    <!-- Lógica JavaScript -->
+    <script>
+        let currentLang = 'va';
+
+        function openNotebook() {
+            document.getElementById('cover-screen').classList.add('hidden');
+            document.getElementById('app-container').classList.remove('hidden');
+            switchTab('teoria');
+            setLanguage(currentLang);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function backToCover() {
+            document.getElementById('app-container').classList.add('hidden');
+            document.getElementById('cover-screen').classList.remove('hidden');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            const btnVa = document.getElementById('btn-va');
+            const btnEs = document.getElementById('btn-es');
+            const cBtnVa = document.getElementById('cover-btn-va');
+            const cBtnEs = document.getElementById('cover-btn-es');
+
+            if (lang === 'va') {
+                if (btnVa) {
+                    btnVa.className = "px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-indigo-600 text-white shadow-sm";
+                    btnEs.className = "px-3 py-1.5 rounded-lg text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
+                }
+                if (cBtnVa) {
+                    cBtnVa.className = "px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-white text-indigo-700 shadow-sm";
+                    cBtnEs.className = "px-3 py-1.5 rounded-lg text-sm font-bold text-white hover:bg-white/10 transition-all";
+                }
+            } else {
+                if (btnEs) {
+                    btnEs.className = "px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-indigo-600 text-white shadow-sm";
+                    btnVa.className = "px-3 py-1.5 rounded-lg text-sm font-bold text-slate-600 hover:text-slate-900 transition-all";
+                }
+                if (cBtnEs) {
+                    cBtnEs.className = "px-3 py-1.5 rounded-lg text-sm font-bold transition-all bg-white text-indigo-700 shadow-sm";
+                    cBtnVa.className = "px-3 py-1.5 rounded-lg text-sm font-bold text-white hover:bg-white/10 transition-all";
+                }
+            }
+
+            document.querySelectorAll('[data-va]').forEach(el => {
+                el.innerHTML = el.getAttribute(`data-${lang}`);
+            });
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(sec => sec.classList.add('hidden'));
+            const target = document.getElementById(`sec-${tabId}`);
+            if (target) target.classList.remove('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                if (!btn.id.includes('examen') && !btn.id.includes('ficha5')) {
+                    btn.classList.add('bg-white', 'text-slate-600');
+                }
+            });
+
+            const activeBtn = document.getElementById(`tab-${tabId}`);
+            if (activeBtn) {
+                activeBtn.classList.remove('bg-white', 'text-slate-600');
+                activeBtn.classList.add('tab-active');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function setQuestionFeedback(elementId, isCorrect, textVa, textEs) {
+            const box = document.getElementById(elementId);
+            box.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-400', 'text-emerald-950', 'bg-rose-50', 'border-rose-400', 'text-rose-950');
+            const msg = currentLang === 'va' ? textVa : textEs;
+
+            if (isCorrect) {
+                box.classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-950');
+                box.innerHTML = `<span class="font-extrabold">✅ ${currentLang === 'va' ? 'Molt bé, Vega!' : '¡Muy bien, Vega!'}</span> ${msg}`;
+            } else {
+                box.classList.add('bg-rose-50', 'border-rose-400', 'text-rose-950');
+                box.innerHTML = `<span class="font-extrabold">❌ ${currentLang === 'va' ? 'Fixa\'t bé:' : 'Fíjate bien:'}</span> ${msg}`;
+            }
+        }
+
+        function setScoreBadge(elementId, score, total) {
+            const badge = document.getElementById(elementId);
+            badge.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-900', 'bg-amber-100', 'text-amber-900');
+            if (score >= Math.ceil(total * 0.7)) {
+                badge.classList.add('bg-emerald-100', 'text-emerald-900');
+                badge.textContent = currentLang === 'va' ? `🎉 ${score} / ${total} encerts! Genial!` : `🎉 ¡${score} / ${total} aciertos! ¡Genial!`;
+            } else {
+                badge.classList.add('bg-amber-100', 'text-amber-900');
+                badge.textContent = currentLang === 'va' ? `💪 ${score} / ${total} encerts. Llig els recuadres rojos!` : `💪 ${score} / ${total} aciertos. ¡Lee los recuadros rojos!`;
+            }
+        }
+
+        // FITXA 1: Comprensió Escrita
+        function checkFicha1() {
+            let score = 0;
+            const items = [
+                { id: 'f1_q1', res: 'res_f1_q1', va: "És una <b>entrevista</b> a l'escriptor valencià <b>Pasqual Alapont</b>, autor de <i>Qui té por de Morgana</i>.", es: "Es una <b>entrevista</b> al escritor valenciano <b>Pasqual Alapont</b>, autor de <i>Qui té por de Morgana</i>." },
+                { id: 'f1_q2', res: 'res_f1_q2', va: "Al primer paràgraf diu que Morgana és una <b>xiqueta entre 11 i 12 anys amb una ànima especial</b>.", es: "En el primer párrafo dice que Morgana es una <b>niña entre 11 y 12 años con un alma especial</b>." },
+                { id: 'f1_q3', res: 'res_f1_q3', va: "Al tercer paràgraf explica que les idees són com <b>llavors que van sembrant-se</b> i que intenta fer créixer.", es: "En el tercer párrafo explica que las ideas son como <b>semillas que se van sembrando</b> y que intenta hacer crecer." },
+                { id: 'f1_q4', res: 'res_f1_q4', va: "Al quart paràgraf conta que <b>no era superbrillant però tampoc dolent</b>; li interessava aprendre i jugar al pati.", es: "En el cuarto párrafo cuenta que <b>no era superbrillante pero tampoco malo</b>; le interesaba aprender y jugar en el patio." },
+                { id: 'f1_q5', res: 'res_f1_q5', va: "Li regala un <b>quadern blau</b> amb la seua foto i li encanta perquè una pàgina en blanc estimula a crear històries.", es: "Le regala un <b>cuaderno azul</b> con su foto y le encanta porque una página en blanco estimula a crear historias." }
+            ];
+            items.forEach(item => {
+                const isOk = document.getElementById(item.id).value === 'ok';
+                if (isOk) score++;
+                setQuestionFeedback(item.res, isOk, item.va, item.es);
+            });
+            setScoreBadge('score-ficha1', score, 5);
+        }
+
+        // FITXA 2: Ordre Alfabètic
+        function checkFicha2() {
+            let score = 0;
+            const items = [
+                { id: 'f2_q1', res: 'res_f2_q1', va: "Totes comencen per <b>gal-</b>. Mireu la 4a lletra: <b>e</b> (gal<b>e</b>ra, gal<b>e</b>rada) → <b>i</b> (gal<b>i</b>ó) → <b>l</b> (gal<b>l</b>, gal<b>l</b>ec, gal<b>l·</b>és).", es: "Todas empiezan por <b>gal-</b>. Mira la 4ª letra: <b>e</b> (gal<b>e</b>ra, gal<b>e</b>rada) → <b>i</b> (gal<b>i</b>ó) → <b>l</b> (gal<b>l</b>, gal<b>l</b>ec, gal<b>l·</b>és)." },
+                { id: 'f2_q2', res: 'res_f2_q2', va: "Després de <b>lla-</b> va la 4a lletra: <b>ç/c</b> (lla<b>ç</b>, lla<b>c</b>una) → <b>m</b> (lla<b>m</b>p) → <b>n</b> (lla<b>n</b>a, lla<b>nç</b>a, lla<b>nd</b>a).", es: "Después de <b>lla-</b> va la 4ª letra: <b>ç/c</b> (lla<b>ç</b>, lla<b>c</b>una) → <b>m</b> (lla<b>m</b>p) → <b>n</b> (lla<b>n</b>a, lla<b>nç</b>a, lla<b>nd</b>a)." },
+                { id: 'f2_q3', res: 'res_f2_q3', va: "Primer <b>còl-</b> (còlic), i després <b>coll- / col·l-</b> mirant la lletra següent: col<b>l</b> → col·l<b>idir</b> → coll<b>ir</b> → col·l<b>isió</b> → coll<b>ita</b>.", es: "Primero <b>còl-</b> (còlic), y después <b>coll- / col·l-</b> mirando la letra siguiente: col<b>l</b> → col·l<b>idir</b> → coll<b>ir</b> → col·l<b>isió</b> → coll<b>ita</b>." },
+                { id: 'f2_q4', res: 'res_f2_q4', va: "La <b>ç</b> s'ordena com una <b>c</b>: tra<b>ç</b> → tra<b>ca</b> → tra<b>çat</b> → tra<b>cció</b> → tra<b>ctat</b> → tra<b>ctor</b>.", es: "La <b>ç</b> se ordena como una <b>c</b>: tra<b>ç</b> → tra<b>ca</b> → tra<b>çat</b> → tra<b>cció</b> → tra<b>ctat</b> → tra<b>ctor</b>." },
+                { id: 'f2_q5', res: 'res_f2_q5', va: "Ordre exacte: <b>a, cada, els, les, més, muntanyes, prop, que, ressonaven, semblaven, trons, volta</b>.", es: "Orden exacto: <b>a, cada, els, les, més, muntanyes, prop, que, ressonaven, semblaven, trons, volta</b>." }
+            ];
+            items.forEach(item => {
+                const isOk = document.getElementById(item.id).value === 'ok';
+                if (isOk) score++;
+                setQuestionFeedback(item.res, isOk, item.va, item.es);
+            });
+            setScoreBadge('score-ficha2', score, 5);
+        }
+
+        // FITXA 3: Camps Semàntics
+        function checkFicha3() {
+            let score = 0;
+            const items = [
+                { id: 'f3_q1', res: 'res_f3_q1', va: "<b>Maig</b> i <b>febrer</b> són del camp semàntic dels <b>mesos de l'any</b>, no dels colors.", es: "<b>Maig</b> y <b>febrer</b> son del campo semántico de los <b>meses del año</b>, no de los colores." },
+                { id: 'f3_q2', res: 'res_f3_q2', va: "<b>Desembre</b> i <b>octubre</b> són del camp semàntic dels <b>mesos de l'any</b>, no de les fruites.", es: "<b>Desembre</b> y <b>octubre</b> son del campo semántico de los <b>meses del año</b>, no de las frutas." },
+                { id: 'f3_q3', res: 'res_f3_q3', va: "Tots són noms d'<b>ocells (aus)</b>: verderol, canari, teuladí, cadernera, oroneta i soliguer.", es: "Todos son nombres de <b>pájaros (aves)</b>: verderol, canari, teuladí, cadernera, oroneta y soliguer." },
+                { id: 'f3_q4', res: 'res_f3_q4', va: "Tots són noms de <b>peixos</b>: samaruc, lluç, llobarro, dorada, tenca i donzella.", es: "Todos son nombres de <b>peces</b>: samaruc, lluç, llobarro, dorada, tenca y donzella." },
+                { id: 'f3_q5', res: 'res_f3_q5', va: "Tots són noms de <b>rèptils</b>: sargantana, fardatxo, dragonet, cocodril, colobra i tortuga.", es: "Todos son nombres de <b>reptiles</b>: sargantana, fardatxo, dragonet, cocodril, colobra y tortuga." }
+            ];
+            items.forEach(item => {
+                const isOk = document.getElementById(item.id).value === 'ok';
+                if (isOk) score++;
+                setQuestionFeedback(item.res, isOk, item.va, item.es);
+            });
+            setScoreBadge('score-ficha3', score, 5);
+        }
+
+        // FITXA 4: Gèneres Literaris
+        function checkFicha4() {
+            let score = 0;
+            const items = [
+                { id: 'f4_q1', res: 'res_f4_q1', va: "És <b>Teatre</b> perquè parla cada personatge amb el seu nom davant i té <i>acotacions</i> entre parèntesis.", es: "Es <b>Teatro</b> porque habla cada personaje con su nombre delante y tiene <i>acotaciones</i> entre paréntesis." },
+                { id: 'f4_q2', res: 'res_f4_q2', va: "És <b>Poesia</b> perquè està escrita en <b>versos curts</b> que tenen ritme i rima.", es: "Es <b>Poesía</b> porque está escrita en <b>versos cortos</b> que tienen ritmo y rima." },
+                { id: 'f4_q3', res: 'res_f4_q3', va: "És <b>Narrativa</b> perquè un narrador conta en <b>prosa</b> què li passa a Morgana.", es: "Es <b>Narrativa</b> porque un narrador cuenta en <b>prosa</b> qué le pasa a Morgana." },
+                { id: 'f4_q4', res: 'res_f4_q4', va: "La <b>Poesia</b> s'escriu en vers, s'agrupa en estrofes i expressa sentiments.", es: "La <b>Poesía</b> se escribe en verso, se agrupa en estrofas y expresa sentimientos." },
+                { id: 'f4_q5', res: 'res_f4_q5', va: "El <b>Teatre</b> no té narrador: està fet perquè els actors representen el diàleg en un escenari.", es: "El <b>Teatro</b> no tiene narrador: está hecho para que los actores representen el diálogo en un escenario." }
+            ];
+            items.forEach(item => {
+                const isOk = document.getElementById(item.id).value === 'ok';
+                if (isOk) score++;
+                setQuestionFeedback(item.res, isOk, item.va, item.es);
+            });
+            setScoreBadge('score-ficha4', score, 5);
+        }
+
+        // TALLER DE EXPRESIÓN ESCRITA
+        function checkWriting() {
+            const text = document.getElementById('writing-area').value.trim();
+            const fb = document.getElementById('writing-feedback');
+            fb.classList.remove('hidden', 'bg-emerald-50', 'border-emerald-400', 'text-emerald-950', 'bg-amber-50', 'border-amber-400', 'text-amber-950');
+
+            const words = text.split(/\s+/).filter(w => w.length > 0);
+            if (words.length < 20) {
+                fb.classList.add('bg-amber-50', 'border-amber-400', 'text-amber-950');
+                fb.innerHTML = `<p class="font-extrabold">✍️ Portes ${words.length} paraules!</p><p>Intenta escriure un poquet més (almenys 35-40 paraules en 2 o 3 paràgrafs curts). Usa els connectors de dalt: <i>En primer lloc..., A més a més..., En conclusió...</i></p>`;
+            } else {
+                const startsUpper = /^[A-ZÀÈÉÍÒÓÚ]/.test(text);
+                const endsDot = /[.!?]$/.test(text);
+                fb.classList.add('bg-emerald-50', 'border-emerald-400', 'text-emerald-950');
+                fb.innerHTML = `<p class="font-extrabold">🌟 Molt ben fet, Vega! Has escrit ${words.length} paraules.</p>
+                <ul class="mt-1 space-y-1 text-xs">
+                    <li>${startsUpper ? '✅' : '⚠️'} Comença per majúscula.</li>
+                    <li>${endsDot ? '✅' : '⚠️'} Acaba amb un punt final.</li>
+                    <li>💡 Recorda revisar que has escrit paraules en valencià (<i>amb, però, molt, també, perquè</i>).</li>
+                </ul>`;
+            }
+        }
+
+        function toggleModelText() {
+            document.getElementById('writing-model').classList.toggle('hidden');
+        }
+
+        // SIMULACROS DE EXAMEN
+        function switchSimulacro(num) {
+            document.querySelectorAll('.sim-panel').forEach(p => p.classList.add('hidden'));
+            document.getElementById(`sim-panel-${num}`).classList.remove('hidden');
+
+            document.querySelectorAll('.sim-btn').forEach(btn => {
+                btn.className = "sim-btn bg-slate-100 text-slate-600 hover:bg-amber-50 font-extrabold py-3 px-2 sm:px-4 rounded-xl border border-slate-200 text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5";
+            });
+            document.getElementById(`btn-sim-${num}`).className = "sim-btn bg-amber-500 text-white font-extrabold py-3 px-2 sm:px-4 rounded-xl shadow-md text-xs sm:text-sm transition-all flex flex-col sm:flex-row items-center justify-center gap-1.5";
+        }
+
+        function checkSimulacro(num) {
+            let points = 0;
+
+            if (num === 1) {
+                const q1 = document.getElementById('s1_1').value === 'ok';
+                if (q1) points += 2;
+                setQuestionFeedback('res_s1_1', q1, "Diu que té <b>l'esperit de l'aventura</b> i per això es llegirà sempre.", "Dice que tiene <b>el espíritu de la aventura</b> y por eso se leerá siempre.");
+
+                const q2 = document.getElementById('s1_2').value === 'ok';
+                if (q2) points += 2;
+                setQuestionFeedback('res_s1_2', q2, "La <b>ç</b> s'ordena dins de la <b>C normal</b> (pàg. 20).", "La <b>ç</b> se ordena dentro de la <b>C normal</b> (pág. 20).");
+
+                const q3 = document.getElementById('s1_3').value === 'ok';
+                if (q3) points += 2;
+                setQuestionFeedback('res_s1_3', q3, "Exemple literal de la pàgina 20: <b>calar → caliu → cal·ligrafia → callista</b>.", "Ejemplo literal de la página 20: <b>calar → caliu → cal·ligrafia → callista</b>.");
+
+                const q4 = document.getElementById('s1_4').value === 'ok';
+                if (q4) points += 2;
+                setQuestionFeedback('res_s1_4', q4, "<b>Juliol</b> és un mes de l'any, no una peça de roba.", "<b>Juliol</b> es un mes del año, no una prenda de ropa.");
+
+                const q5 = document.getElementById('s1_5').value === 'ok';
+                if (q5) points += 2;
+                setQuestionFeedback('res_s1_5', q5, "És <b>Narrativa</b> perquè conta una història en prosa amb un narrador.", "Es <b>Narrativa</b> porque cuenta una historia en prosa con un narrador.");
+            }
+
+            if (num === 2) {
+                const q1 = document.getElementById('s2_1').value === 'ok';
+                if (q1) points += 2;
+                setQuestionFeedback('res_s2_1', q1, "Va a la paperera i <b>la rescata</b> per a fer-la créixer.", "Va a la papelera y <b>la rescata</b> para hacerla crecer.");
+
+                const q2 = document.getElementById('s2_2').value === 'ok';
+                if (q2) points += 2;
+                setQuestionFeedback('res_s2_2', q2, "Per inicials: <b>T</b>axista → <b>U</b>ròloga → <b>V</b>eterinària → <b>Z</b>eladora.", "Por iniciales: <b>T</b>axista → <b>U</b>ròloga → <b>V</b>eterinària → <b>Z</b>eladora.");
+
+                const q3 = document.getElementById('s2_3').value === 'ok';
+                if (q3) points += 2;
+                setQuestionFeedback('res_s2_3', q3, "Definició del quadre de la pàgina 15.", "Definición del cuadro de la página 15.");
+
+                const q4 = document.getElementById('s2_4').value === 'ok';
+                if (q4) points += 2;
+                setQuestionFeedback('res_s2_4', q4, "Són noms d'<b>insectes / artròpodes</b> (activitat 29).", "Son nombres de <b>insectos / artrópodos</b> (actividad 29).");
+
+                const q5 = document.getElementById('s2_5').value === 'ok';
+                if (q5) points += 2;
+                setQuestionFeedback('res_s2_5', q5, "És <b>Teatre</b> perquè hi ha diàleg amb el nom del personatge davant i acotacions.", "Es <b>Teatro</b> porque hay diálogo con el nombre del personaje delante y acotaciones.");
+            }
+
+            if (num === 3) {
+                const q1 = document.getElementById('s3_1').value === 'ok';
+                if (q1) points += 2;
+                setQuestionFeedback('res_s3_1', q1, "L'alfabet valencià consta de <b>vint-i-sis lletres</b> (pàg. 20).", "El alfabeto valenciano consta de <b>veintiséis letras</b> (pág. 20).");
+
+                const q2 = document.getElementById('s3_2').value === 'ok';
+                if (q2) points += 2;
+                setQuestionFeedback('res_s3_2', q2, "Per inicials: <b>F</b>errer → <b>G</b>eògrafa → <b>H</b>istoriadora → <b>X</b>apador.", "Por iniciales: <b>F</b>errer → <b>G</b>eògrafa → <b>H</b>istoriadora → <b>X</b>apador.");
+
+                const q3 = document.getElementById('s3_3').value === 'ok';
+                if (q3) points += 2;
+                setQuestionFeedback('res_s3_3', q3, "<b>Març</b> i <b>abril</b> són mesos de l'any, no mobles.", "<b>Març</b> y <b>abril</b> son meses del año, no muebles.");
+
+                const q4 = document.getElementById('s3_4').value === 'ok';
+                if (q4) points += 2;
+                setQuestionFeedback('res_s3_4', q4, "És <b>Poesia</b> perquè té versos curts i rima (<i>sol / dol</i>).", "Es <b>Poesía</b> porque tiene versos cortos y rima (<i>sol / dol</i>).");
+
+                const q5 = document.getElementById('s3_5').value === 'ok';
+                if (q5) points += 2;
+                setQuestionFeedback('res_s3_5', q5, "Els 3 gèneres literaris són: <b>Narrativa, Poesia i Teatre</b>.", "Los 3 géneros literarios son: <b>Narrativa, Poesía y Teatro</b>.");
+            }
+
+            const scoreBadge = document.getElementById(`score-sim-${num}`);
+            scoreBadge.classList.remove('hidden', 'bg-emerald-600', 'bg-amber-600', 'text-white');
+            scoreBadge.classList.add(points >= 6 ? 'bg-emerald-600' : 'bg-amber-600', 'text-white');
+            scoreBadge.textContent = `Nota: ${points} / 10`;
+
+            if (points >= 6) {
+                const medal = document.getElementById(`medal-${num}`);
+                medal.classList.remove('bg-slate-200', 'text-slate-500');
+                medal.classList.add('bg-emerald-500', 'text-white', 'shadow-sm', 'scale-105');
+            }
+        }
+    </script>
+</body>
+</html>
